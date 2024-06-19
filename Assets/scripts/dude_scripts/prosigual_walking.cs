@@ -8,8 +8,6 @@ public class prosigual_walking : MonoBehaviour
     public Vector3 carent_position;
     public target_to_go target_to_go;
 
-    [SerializeField] static float step_velosyty = 66f;
-
     Ray ray;
     public LayerMask ground_mask;
 
