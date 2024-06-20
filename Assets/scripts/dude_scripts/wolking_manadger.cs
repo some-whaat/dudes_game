@@ -56,7 +56,7 @@ public class wolking_manadger : MonoBehaviour
 
         ellipseCenter = (left_transform + right_transform) / 2f;
 
-        if (((timer > step_time) && (point -  ellipseCenter).magnitude > min_step_dist) || (long_timer > restep_time && (point != ellipseCenter)) && !(is_stepping))
+        if (((timer > step_time) && (point -  ellipseCenter).magnitude > min_step_dist) || (long_timer > restep_time && (point != ellipseCenter)))
         {
             if (FindFarest(left_transform, right_transform, point))
             {
@@ -84,21 +84,45 @@ public class wolking_manadger : MonoBehaviour
         Vector3 half_way = (end_pos + origin) / 2;
         half_way.y = origin.y + step_hight;
 
+        is_stepping = true;
+        float current_movement_time = 0f;
+
+        while (Vector3.Distance(prosigual_walking.carent_position, half_way) > 0)
+        {
+            current_movement_time += Time.deltaTime;
+            prosigual_walking.carent_position = Vector3.Lerp(origin, half_way, Mathf.Sqrt(current_movement_time / step_movement_time));
+            yield return null;
+        }
+
+        current_movement_time = 0f;
+
+        while (Vector3.Distance(prosigual_walking.carent_position, end_pos) > 0)
+        {
+            current_movement_time += Time.deltaTime;
+            prosigual_walking.carent_position = Vector3.Lerp(half_way, end_pos, Mathf.Pow(current_movement_time / step_movement_time, 2));
+            yield return null;
+        }
+
+        is_stepping = false;
+    }
+
+    /*
+    public IEnumerator MakeStep1(prosigual_walking prosigual_walking, target_to_go target_to_go)
+    {
+        Vector3 vec = (target_to_go.point - prosigual_walking.transform.position) + (target_to_go.point - new Vector3());
+        vec.y = target_to_go.point.y;
+
+        Vector3 origin = prosigual_walking.carent_position;
+        Vector3 end_pos = ProjetOnPlain(math_method_influence * vec + (1 - math_method_influence) * target_to_go.point);
+        Vector3 half_way = (end_pos + origin) / 2;
+        half_way.y = origin.y + step_hight;
+
         StartCoroutine(MoveObject(prosigual_walking, origin, half_way));
 
         while (is_stepping)
         {
             yield return null;
         }
-
-        /*
-        float mid_step_time = 0f;
-        while (mid_step_time < mid_step_vaiting_time)
-        {
-            mid_step_time += Time.deltaTime;
-            yield return null;
-        }
-        */
 
         StartCoroutine(MoveObject(prosigual_walking, half_way, end_pos));
     }
@@ -117,6 +141,7 @@ public class wolking_manadger : MonoBehaviour
 
         is_stepping = false;
     }
+    */
 
     public bool FindFarest(Vector3 point1, Vector3 point2, Vector3 calkpoint)
     {

@@ -338,7 +338,6 @@ MonoBehaviour:
   left_prosigual_walking: {fileID: 2496930143711957743}
   right_prosigual_walking: {fileID: 9097847346882799909}
   step_movement_time: 0.029
-  big_step_dist: 0.01
   math_method_influence: 0.6
   step_hight: 0.4
   step_time: 0.29
@@ -990,7 +989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cfe38610ee4ef4f8dc4185463a3d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 5
   rot_speed: 720
   seporation_intensity: 1
   distance_of_vieuving: 6
