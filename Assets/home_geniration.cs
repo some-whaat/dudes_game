@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class home_geniration : MonoBehaviour
 {
+    [SerializeField] private GameObject[] plate_meshes;
     [SerializeField] private GameObject plate;
     [SerializeField] private GameObject wall_coll;
 
@@ -52,7 +53,10 @@ public class home_geniration : MonoBehaviour
 
         foreach (Vector3 pos in spawned_plates_poses)
         {
-            GameObject _plate = Instantiate(plate);
+            GameObject _plate = Instantiate(plate, transform);
+            GameObject plate_mash = Instantiate(plate_meshes.ElementAt(Random.Range(0, plate_meshes.Length)));
+
+            plate_mash.transform.parent = _plate.transform;
             _plate.transform.position = pos;
             spawned_plates.Add(_plate);
         }
@@ -89,7 +93,7 @@ public class home_geniration : MonoBehaviour
             {
                 foreach (Vector3 empty_cell in empty_neibors)
                 {
-                    GameObject _wall = Instantiate(wall_coll);
+                    GameObject _wall = Instantiate(wall_coll, transform);
                     _wall.transform.position = (empty_cell + plate_pos) / 2;
                     if (empty_cell.x == plate_pos.x)
                     {
