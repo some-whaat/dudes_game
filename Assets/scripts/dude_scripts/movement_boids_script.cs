@@ -40,7 +40,7 @@ public class movement_boids_script : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = Vector3.zero;
-        //transform.rotation.z = 0;
+
         direction = (Seporation() + direction).normalized;
         direction.y = 0;
         //Debug.Log(direction);
@@ -98,7 +98,9 @@ public class movement_boids_script : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit, distance_of_vieuving))
             {
-                raycast_interseptions.Add(hit.point);
+                Vector3 hit_point = hit.point;
+                hit_point.y = transform.position.y;
+                raycast_interseptions.Add(hit_point);
             }
         }
 

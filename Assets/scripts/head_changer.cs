@@ -15,6 +15,7 @@ public class head_changer : MonoBehaviour
 
     void Start()
     {
+        
         spawner = GameObject.FindGameObjectWithTag("spawner");
         spawner_script = spawner.GetComponent<spawner_script>();
         choose_dude = spawner.GetComponent<choose_dude>();
@@ -38,15 +39,5 @@ public class head_changer : MonoBehaviour
 
         choose_dude.created_dudes.Add(prop);
         spawner_script.all_dudes.Remove(prop);
-    }
-
-    void OnMouseOver()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            choose_dude.IsTheDude(prop);
-        }
-         
-        //Debug.Log('k');
     }
 }
