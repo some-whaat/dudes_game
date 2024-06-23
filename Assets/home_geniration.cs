@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class home_geniration : MonoBehaviour
 {
@@ -22,9 +23,11 @@ public class home_geniration : MonoBehaviour
     [SerializeField] private int centralisation_of_random_plate = 2;
     [SerializeField] private int amount_spawned_plates = 5;
 
+    HashSet<Vector3> spawned_plates_poses;
+
     void Start()
     {
-        HashSet<Vector3> spawned_plates_poses = new HashSet<Vector3>();
+        spawned_plates_poses = new HashSet<Vector3>();
 
         HashSet<Vector3> center_poses = new HashSet<Vector3>();
 
@@ -39,6 +42,12 @@ public class home_geniration : MonoBehaviour
 
             floor_center_plate_pos = spawned_floor_plates_poses.ElementAt(Random.Range(0, spawned_floor_plates_poses.Count - 1));
 
+            if (floor_hight != -floor_border)
+            {
+                spawned_floor_plates_poses.Remove(floor_center_plate_pos);
+                floor_center_plate_pos = create_stairs_return_new_center(floor_center_plate_pos, spawned_floor_plates_poses);
+            }
+            
             center_poses.Add(floor_center_plate_pos);
 
             spawned_plates_poses.UnionWith(spawned_floor_plates_poses);
@@ -55,13 +64,6 @@ public class home_geniration : MonoBehaviour
             plate_mash.transform.parent = _plate.transform;
             _plate.transform.position = pos;
             spawned_plates.Add(_plate);
-        }
-
-        foreach (Vector3 pos in center_poses)
-        {
-            GameObject _steirs = Instantiate(stairs, transform);
-
-            _steirs.transform.position = new Vector3(pos.x, pos.y - 3, pos.z);
         }
 
         find_wall_poses(spawned_plates_poses);
@@ -86,6 +88,23 @@ public class home_geniration : MonoBehaviour
         return neibor_poses;
     }
 
+    float from_whitch_side_is_neibor(Vector3 pos, Vector3 neibor)
+    {
+        if (pos.x > neibor.x)
+        {
+            return 90f;
+        }
+        else if (pos.x < neibor.x)
+        {
+            return -90f;
+        }
+        else if (pos.z < neibor.z)
+        {
+            return 180f;
+        }
+        return 0f;
+    }
+
     HashSet<Vector3> generate_all_floor_poses(Vector3 curr_plate_pos)
     {
         HashSet<Vector3> spawned_plates_poses = new HashSet<Vector3>();
@@ -106,6 +125,24 @@ public class home_geniration : MonoBehaviour
         }
 
         return spawned_plates_poses;
+    }
+
+    Vector3 create_stairs_return_new_center(Vector3 center, HashSet<Vector3> floor_poses)
+    {
+
+        GameObject _steirs = Instantiate(stairs, transform);
+        _steirs.transform.position = new Vector3(center.x, center.y - 3, center.z);
+
+        HashSet<Vector3> center_neibors = find_neibors(center);
+        center_neibors.IntersectWith(floor_poses);
+        Vector3 center_neibor = center_neibors.ElementAt(Random.Range(0, center_neibors.Count));
+        Vector3 dir = (center - center_neibor).normalized;
+
+        _steirs.transform.forward = -dir;
+
+        Vector3 new_center = center - dir * plate_side;
+
+        return new_center;
     }
 
     private HashSet<GameObject> find_wall_poses(HashSet<Vector3> spawned_plates_poses)

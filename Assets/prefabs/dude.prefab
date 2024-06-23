@@ -155,7 +155,7 @@ Transform:
   m_GameObject: {fileID: 1196531583258478172}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.031996936, y: -0.45500016, z: -0.22000013}
+  m_LocalPosition: {x: -0.031996936, y: -0.45500016, z: -0.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -265,7 +265,7 @@ Transform:
   m_GameObject: {fileID: 4510100610479648786}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2099945, y: -0.5280001, z: -0.20000015}
+  m_LocalPosition: {x: 0.2099945, y: -0.5280001, z: -0.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -338,7 +338,7 @@ MonoBehaviour:
   left_prosigual_walking: {fileID: 2496930143711957743}
   right_prosigual_walking: {fileID: 9097847346882799909}
   step_movement_time: 0.017
-  math_method_influence: 0.555
+  math_method_influence: 0.3
   step_hight: 0.3499
   step_time: 0.1
   min_step_dist: 0.92

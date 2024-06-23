@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6182490431224121952, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7118760626779705106, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: orthographic size
@@ -284,6 +284,7 @@ MonoBehaviour:
   - {fileID: 7823830064836501809, guid: 86a244ebf677a81449cd4bd1e262f4f0, type: 3}
   plate: {fileID: 1927125606229036755, guid: 9216d3443da2ebd45956423bd69572e7, type: 3}
   wall_coll: {fileID: 1555623924044153249, guid: 6d790e2ceb7fd724db1b3180da655ded, type: 3}
+  stairs: {fileID: 4929476852316421578, guid: dc4ee396e35210a4c863399ad9280dd3, type: 3}
   plate_hight: 0.5
   plate_side: 5
   dist_between_floors: 6.5
