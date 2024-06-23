@@ -6,10 +6,12 @@ using static UnityEditor.PlayerSettings;
 
 public class home_geniration : MonoBehaviour
 {
+    [SerializeField] Color[] colors;
     [SerializeField] private GameObject spawner;
     [SerializeField] private GameObject center_for_camera;
 
     [SerializeField] private GameObject[] plate_meshes;
+    [SerializeField] private GameObject[] plate_ornaments;
     [SerializeField] private GameObject plate;
     [SerializeField] private GameObject wall_coll;
     [SerializeField] private GameObject stairs;
@@ -60,8 +62,13 @@ public class home_geniration : MonoBehaviour
         {
             GameObject _plate = Instantiate(plate, transform);
             GameObject plate_mash = Instantiate(plate_meshes.ElementAt(Random.Range(0, plate_meshes.Length)));
+            GameObject plate_ornament = Instantiate(plate_ornaments.ElementAt(Random.Range(0, plate_ornaments.Length)));
+
+            plate_ornament.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
+            plate_mash.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
 
             plate_mash.transform.parent = _plate.transform;
+            plate_ornament.transform.parent = _plate.transform;
             _plate.transform.position = pos;
             spawned_plates.Add(_plate);
         }
@@ -139,6 +146,7 @@ public class home_geniration : MonoBehaviour
         Vector3 dir = (center - center_neibor).normalized;
 
         _steirs.transform.forward = -dir;
+        _steirs.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
 
         Vector3 new_center = center - dir * plate_side;
 
