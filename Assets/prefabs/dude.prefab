@@ -346,6 +346,7 @@ MonoBehaviour:
   left_target_to_go: {fileID: 5105259810080626582}
   right_target_to_go: {fileID: 1045342683707994251}
   raydist: 2
+  movement_boids_script: {fileID: 3748895148270837810}
 --- !u!1 &5343980817304986297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,13 +1048,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4.6
-  rot_speed: 444
+  rot_speed: 777
+  hight_from_ground: 0.5
   seporation_intensity: 1
   distance_of_vieuving: 5
   hight_of_raycast: 2
   angle_of_vieuving: 360
-  amount_of_rays: 8
-  wolking_manadger: {fileID: 0}
+  amount_of_rays: 10
   hight_y: 0
 --- !u!4 &6731477284159085947 stripped
 Transform:

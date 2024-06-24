@@ -10,6 +10,7 @@ public class movement_boids_script : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private float rot_speed = 720;
+    [SerializeField] private float hight_from_ground = 2.5f;
     [SerializeField] private float seporation_intensity = 5;
 
     [SerializeField] private float distance_of_vieuving;
@@ -17,7 +18,7 @@ public class movement_boids_script : MonoBehaviour
     [SerializeField] private float angle_of_vieuving;
     [SerializeField] private float amount_of_rays;
 
-    [SerializeField] wolking_manadger wolking_manadger;
+    //[SerializeField] wolking_manadger wolking_manadger;
     public float hight_y;
 
     private float fraction_angle;
@@ -43,7 +44,6 @@ public class movement_boids_script : MonoBehaviour
 
         direction = (Seporation() + direction).normalized;
         direction.y = 0;
-        //Debug.Log(direction);
 
         if (direction == Vector3.zero)
         {
@@ -52,8 +52,9 @@ public class movement_boids_script : MonoBehaviour
 
 
         Vector3 next_pos = rb.transform.position + direction * speed * Time.deltaTime;
-        
-        next_pos.y = hight_y;
+        next_pos.y = hight_y - hight_from_ground;
+
+        //next_pos.y = wolking_manadger.point.y;
 
         rb.transform.position = next_pos;
 

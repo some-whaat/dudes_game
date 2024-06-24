@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static UnityEngine.UI.Image;
@@ -37,7 +38,7 @@ public class wolking_manadger : MonoBehaviour
 
     [SerializeField] float raydist = 5;
 
-    private bool is_stepping;
+    [SerializeField] movement_boids_script movement_boids_script;
 
     void Update()
     {
@@ -72,6 +73,8 @@ public class wolking_manadger : MonoBehaviour
             timer = 0;
             long_timer = 0;
         }
+
+        movement_boids_script.hight_y = point.y;
     }
 
     public IEnumerator MakeStep(prosigual_walking prosigual_walking, target_to_go target_to_go)
@@ -84,7 +87,7 @@ public class wolking_manadger : MonoBehaviour
         Vector3 half_way = (end_pos + origin) / 2;
         half_way.y = origin.y + step_hight;
 
-        is_stepping = true;
+        //is_stepping = true;
         float current_movement_time = 0f;
 
         while (Vector3.Distance(prosigual_walking.carent_position, half_way) > 0)
@@ -103,7 +106,7 @@ public class wolking_manadger : MonoBehaviour
             yield return null;
         }
 
-        is_stepping = false;
+        //is_stepping = false;
     }
 
     /*

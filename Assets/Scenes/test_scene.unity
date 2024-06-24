@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.9339623, g: 0.876691, b: 0.90885705, a: 1}
+  m_AmbientSkyColor: {r: 0.8962264, g: 0.7228996, b: 0.7228996, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1.5
-  m_AmbientMode: 3
+  m_AmbientIntensity: 1.1
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.7884444, g: 0.7884444, b: 0.88699996, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: f8fa95a30bbaead4bbdd80cadcb6855a, type: 2}
   m_HaloStrength: 0.5
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.03952009, g: 0.03952009, b: 0.03952009, a: 1}
+  m_Sun: {fileID: 1778623105}
+  m_IndirectSpecularColor: {r: 0.39796665, g: 0.27413762, b: 0.37928513, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -134,6 +134,10 @@ PrefabInstance:
     - target: {fileID: 2664680060966013427, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3288118820577305489, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: offset
+      value: 111
       objectReference: {fileID: 0}
     - target: {fileID: 3288118820577305489, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: target
@@ -277,25 +281,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colors:
-  - {r: 0.9058824, g: 0.6784314, b: 0.80392164, a: 0}
-  - {r: 0.54901963, g: 0.5372549, b: 0.6117647, a: 0}
-  - {r: 1, g: 0.9058824, b: 0.8941177, a: 0}
+  - {r: 1, g: 0.90196085, b: 0.882353, a: 1}
+  - {r: 0.8745098, g: 0.6069098, b: 0.72924125, a: 1}
+  - {r: 0.5372549, g: 0.5411765, b: 0.60784316, a: 1}
   spawner: {fileID: 975370394}
   center_for_camera: {fileID: 1133254971}
   plate_meshes:
-  - {fileID: 919132149155446097, guid: ebf704c5fdd14b3489b3bf134db03148, type: 3}
+  - {fileID: 5459810829043401177, guid: de55da07b08f3954cb1d5dd2d75c7e18, type: 3}
   plate_ornaments:
   - {fileID: 919132149155446097, guid: 0fdcd04f8465986418349bf63b811913, type: 3}
   - {fileID: 919132149155446097, guid: f014c83ebdb10bc42b4f8426ad4d3f09, type: 3}
   plate: {fileID: 1927125606229036755, guid: 9216d3443da2ebd45956423bd69572e7, type: 3}
   wall_coll: {fileID: 1555623924044153249, guid: 6d790e2ceb7fd724db1b3180da655ded, type: 3}
   stairs: {fileID: 4929476852316421578, guid: dc4ee396e35210a4c863399ad9280dd3, type: 3}
-  plate_hight: 0.5
+  ornament_fiequoncy: 5
   plate_side: 5
   dist_between_floors: 6.5
   grid_side_amount_of_plates: 33
   amount_of_floors: 5
-  centralisation_of_random_plate: 3
   amount_spawned_plates: 44
 --- !u!4 &821888012
 Transform:
