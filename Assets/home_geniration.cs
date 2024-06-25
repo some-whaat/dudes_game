@@ -4,11 +4,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
 using static UnityEditor.PlayerSettings;
+using static UnityEditor.ShaderData;
 
 public class home_geniration : MonoBehaviour
 {
     [SerializeField] Color[] colors;
-    [SerializeField] private GameObject spawner;
+    [SerializeField] private spawner_script spawner_script;
     [SerializeField] private GameObject center_for_camera;
 
     [SerializeField] private GameObject[] plate_meshes;
@@ -33,6 +34,8 @@ public class home_geniration : MonoBehaviour
         spawned_plates_poses = new HashSet<Vector3>();
 
         float floor_border = ((amount_of_floors - 1)/2) * dist_between_floors;
+
+        //float middle_floor = floor_border - (floor_border * 2);
 
         Vector3 floor_center_plate_pos = new Vector3(0, floor_border, 0);
         for (float floor_hight = floor_border; floor_hight >= -floor_border; floor_hight -= dist_between_floors)
@@ -61,6 +64,7 @@ public class home_geniration : MonoBehaviour
             create_walls(edge_transforms);
 
             spawned_plates_poses.UnionWith(spawned_floor_plates_poses);
+
         }
         
 
@@ -87,8 +91,7 @@ public class home_geniration : MonoBehaviour
         }
 
 
-        spawner.transform.position = spawned_plates_poses.ElementAt(Random.Range(0, spawned_plates_poses.Count));
-        center_for_camera.transform.position = spawner.transform.position;
+        spawner_script.spawn_dudes(spawned_plates_poses);
     }
 
     HashSet<Vector3> find_neibors(Vector3 vec)

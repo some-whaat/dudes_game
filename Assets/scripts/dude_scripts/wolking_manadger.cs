@@ -40,6 +40,8 @@ public class wolking_manadger : MonoBehaviour
 
     [SerializeField] movement_boids_script movement_boids_script;
 
+    bool is_stepping = false;
+
     void Update()
     {
         ray = new Ray(transform.position, -transform.up);
@@ -57,16 +59,16 @@ public class wolking_manadger : MonoBehaviour
 
         ellipseCenter = (left_transform + right_transform) / 2f;
 
-        if (((timer > step_time) && (point -  ellipseCenter).magnitude > min_step_dist) || (long_timer > restep_time && (point != ellipseCenter)))
+        if (((timer > step_time) && (point -  ellipseCenter).magnitude > min_step_dist) || (long_timer > restep_time && (point != ellipseCenter)) && !is_stepping)
         {
             if (FindFarest(left_transform, right_transform, point))
             {
-                StartCoroutine(MakeStep(left_prosigual_walking, left_target_to_go));
+                MakeStep(left_prosigual_walking, left_target_to_go);
                 //MakeStep(left_prosigual_walking, ProjetOnPlain((point - right_prosigual_walking.transform.position) + (point - new Vector3())), left_target_to_go);
             }
             else
             {
-                StartCoroutine(MakeStep(right_prosigual_walking, right_target_to_go));
+                MakeStep(right_prosigual_walking, right_target_to_go);
                 //MakeStep(right_prosigual_walking, ProjetOnPlain((point - left_prosigual_walking.transform.position) + (point - new Vector3())), right_target_to_go);
             }
 
@@ -77,7 +79,18 @@ public class wolking_manadger : MonoBehaviour
         movement_boids_script.hight_y = point.y;
     }
 
-    public IEnumerator MakeStep(prosigual_walking prosigual_walking, target_to_go target_to_go)
+    public void MakeStep(prosigual_walking prosigual_walking, target_to_go target_to_go)
+    {
+        Vector3 vec = (target_to_go.point - prosigual_walking.transform.position) + (target_to_go.point - new Vector3());
+        vec.y = target_to_go.point.y;
+
+        Vector3 end_pos = ProjetOnPlain(math_method_influence * vec + (1 - math_method_influence) * target_to_go.point);
+
+        prosigual_walking.carent_position = end_pos;
+
+    }
+
+        public IEnumerator smoothMakeStep(prosigual_walking prosigual_walking, target_to_go target_to_go)
     {
         Vector3 vec = (target_to_go.point - prosigual_walking.transform.position) + (target_to_go.point - new Vector3());
         vec.y = target_to_go.point.y;
@@ -87,7 +100,7 @@ public class wolking_manadger : MonoBehaviour
         Vector3 half_way = (end_pos + origin) / 2;
         half_way.y = origin.y + step_hight;
 
-        //is_stepping = true;
+        is_stepping = true;
         float current_movement_time = 0f;
 
         while (Vector3.Distance(prosigual_walking.carent_position, half_way) > 0)
@@ -106,7 +119,7 @@ public class wolking_manadger : MonoBehaviour
             yield return null;
         }
 
-        //is_stepping = false;
+        is_stepping = false;
     }
 
     /*

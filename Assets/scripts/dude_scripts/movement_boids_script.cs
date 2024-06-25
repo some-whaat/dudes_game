@@ -17,6 +17,7 @@ public class movement_boids_script : MonoBehaviour
     [SerializeField] private float hight_of_raycast = 0;
     [SerializeField] private float angle_of_vieuving;
     [SerializeField] private float amount_of_rays;
+    [SerializeField] private LayerMask dudes_mask;
 
     //[SerializeField] wolking_manadger wolking_manadger;
     public float hight_y;
@@ -97,11 +98,24 @@ public class movement_boids_script : MonoBehaviour
             ray = new Ray(position_of_raycast, ray_direction);
             Debug.DrawRay(position_of_raycast, ray_direction);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, distance_of_vieuving))
+            if (Physics.Raycast(ray, out RaycastHit hit, distance_of_vieuving, dudes_mask))
             {
                 Vector3 hit_point = hit.point;
                 hit_point.y = transform.position.y;
                 raycast_interseptions.Add(hit_point);
+
+                /*
+                if (hit.transform.CompareTag("target"))
+                {
+                    Debug.Log("steirs!");
+                    raycast_interseptions.Add(-hit_point);
+                }
+
+                else
+                {
+                    raycast_interseptions.Add(hit_point);
+                }
+                */
             }
         }
 

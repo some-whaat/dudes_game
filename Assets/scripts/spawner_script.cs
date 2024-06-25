@@ -20,6 +20,8 @@ public class spawner_script : MonoBehaviour
 
     private float timer;
 
+    [SerializeField] int amound_dudes_to_spawn = 33;
+
     void Start()
     {
         all_dudes = new HashSet<int[]>();
@@ -38,10 +40,9 @@ public class spawner_script : MonoBehaviour
                 }
             }
         }
-
-        Instantiate(DUDE_prefab, transform);
     }
 
+    /*
     void Update()
     {
         timer += Time.deltaTime;
@@ -57,12 +58,16 @@ public class spawner_script : MonoBehaviour
         }
         //Debug.Log(all_dudes.Count);
     }
+    */
 
-    private void spawn_dude()
+    public void spawn_dudes(HashSet<Vector3> poses)
     {
-        int[] prop = all_dudes.ElementAt(Random.Range(0, all_dudes.Count));
-        GameObject dude = Instantiate(DUDE_prefab, transform);
-        dude.GetComponent<head_changer>().prop = prop;
-        all_dudes.Remove(prop);
+        for (int i = 0; i < amound_dudes_to_spawn; i++)
+        {
+            Vector3 pos = poses.ElementAt(Random.Range(0, poses.Count));
+            GameObject dude = Instantiate(DUDE_prefab, transform);
+            dude.transform.position = pos;
+            poses.Remove(pos);
+        }
     }
 }

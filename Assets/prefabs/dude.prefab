@@ -1048,13 +1048,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4.6
-  rot_speed: 777
-  hight_from_ground: 0.5
-  seporation_intensity: 1
+  rot_speed: 333
+  hight_from_ground: 0.25
+  seporation_intensity: 0.9
   distance_of_vieuving: 5
   hight_of_raycast: 2
   angle_of_vieuving: 360
   amount_of_rays: 10
+  dudes_mask:
+    serializedVersion: 2
+    m_Bits: 439
   hight_y: 0
 --- !u!4 &6731477284159085947 stripped
 Transform:
