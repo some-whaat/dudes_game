@@ -972,7 +972,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &-7104377264225307164
 MonoBehaviour:
@@ -1048,10 +1048,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4.6
-  rot_speed: 333
+  rot_speed: 666
   hight_from_ground: 0.25
   seporation_intensity: 0.9
-  distance_of_vieuving: 5
+  distance_of_vieuving: 4
   hight_of_raycast: 2
   angle_of_vieuving: 360
   amount_of_rays: 10

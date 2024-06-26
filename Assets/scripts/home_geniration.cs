@@ -37,34 +37,46 @@ public class home_geniration : MonoBehaviour
 
         //float middle_floor = floor_border - (floor_border * 2);
 
+        HashSet<GameObject> all_wall_transforms = new HashSet<GameObject>();
+
         Vector3 floor_center_plate_pos = new Vector3(0, floor_border, 0);
         for (float floor_hight = floor_border; floor_hight >= -floor_border; floor_hight -= dist_between_floors)
         {
             floor_center_plate_pos.y = floor_hight;
 
-            HashSet<Vector3> spawned_floor_plates_poses = generate_all_floor_poses(floor_center_plate_pos);  
+            HashSet<Vector3> spawned_floor_plates_poses = generate_all_floor_poses(floor_center_plate_pos);
 
-            HashSet<GameObject> edge_transforms = find_edge_transforms(spawned_floor_plates_poses);
-            GameObject random_edge = edge_transforms.ElementAt(Random.Range(0, edge_transforms.Count));
-
-            floor_center_plate_pos = random_edge.transform.position;
-
+            HashSet<GameObject> wall_transforms = find_edge_transforms(spawned_floor_plates_poses);
+            
             if (floor_hight != -floor_border)
             {
-                Vector3 steir_pose = random_edge.transform.position;
+                GameObject random_wall = wall_transforms.ElementAt(Random.Range(0, wall_transforms.Count));
+
+                floor_center_plate_pos = random_wall.transform.position;
+
+                Vector3 steir_pose = random_wall.transform.position;
                 steir_pose.y -= 3;
 
-                edge_transforms.Remove(random_edge);
+                Destroy(random_wall);
+                wall_transforms.Remove(random_wall);
                 GameObject _steirs = Instantiate(stairs, transform);
                 _steirs.transform.position = steir_pose;
-                _steirs.transform.rotation = random_edge.transform.rotation;
+                _steirs.transform.rotation = random_wall.transform.rotation;
                 _steirs.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
             }
 
-            create_walls(edge_transforms);
+            /*
+            if (floor_hight != floor_border)
+            {
+                foreach (GameObject wall in wall_transforms)
+                {
+                    if (all_wall_transforms.Contains(wall))
+                }
+            }
+            */
 
             spawned_plates_poses.UnionWith(spawned_floor_plates_poses);
-
+            //all_wall_transforms.UnionWith(wall_transforms);
         }
         
 
@@ -156,12 +168,12 @@ public class home_geniration : MonoBehaviour
 
                 foreach (Vector3 empty_cell in empty_neibors)
                 {
-                    GameObject edge = new GameObject();
+                    GameObject wall = Instantiate(wall_coll, transform);
 
-                    edge.transform.position = empty_cell;
-                    edge.transform.forward = -(empty_cell - plate_pos).normalized;
+                    wall.transform.position = empty_cell;
+                    wall.transform.forward = -(empty_cell - plate_pos).normalized;
 
-                    edge_transforms.Add(edge);
+                    edge_transforms.Add(wall);
                 }
             }
         }
