@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.ProBuilder.Shapes;
-using static UnityEditor.PlayerSettings;
-using static UnityEditor.ShaderData;
 
 public class home_geniration : MonoBehaviour
 {
-    [SerializeField] Color[] colors;
+    [SerializeField] manadger_script manadger_script;
     [SerializeField] private spawner_script spawner_script;
     [SerializeField] private GameObject center_for_camera;
+
+    [SerializeField] Color[] colors;
 
     [SerializeField] private GameObject[] plate_meshes;
     [SerializeField] private GameObject[] plate_ornaments;
@@ -18,23 +17,26 @@ public class home_geniration : MonoBehaviour
     [SerializeField] private GameObject wall_coll;
     [SerializeField] private GameObject stairs;
 
+    private float plate_side = 5f;
+    private float dist_between_floors = 6.5f;
+
+    public int amount_of_floors = 5;
+    public int amount_spawned_plates = 5;
     [SerializeField] private int ornament_fiequoncy = 5;
 
-    [SerializeField] private float plate_side = 5f;
-    [SerializeField] private float dist_between_floors = 5.5f;
-    [SerializeField] private int grid_side_amount_of_plates = 10;
-    [SerializeField] private int amount_of_floors = 5;
-
-    [SerializeField] private int amount_spawned_plates = 5;
 
     HashSet<Vector3> spawned_plates_poses;
 
     void Start()
     {
+        amount_of_floors = manadger_script.amount_of_floors;
+        amount_spawned_plates = manadger_script.amount_spawned_plates;
+
+
         spawned_plates_poses = new HashSet<Vector3>();
 
-        float floor_border = ((amount_of_floors - 1)/2) * dist_between_floors;
-
+        float floor_border = (amount_of_floors - 1) * dist_between_floors;
+        floor_border /= 2;
         //float middle_floor = floor_border - (floor_border * 2);
 
         HashSet<GameObject> all_wall_transforms = new HashSet<GameObject>();
@@ -144,15 +146,6 @@ public class home_geniration : MonoBehaviour
         return spawned_plates_poses;
     }
 
-    void create_walls(HashSet<GameObject> eges)
-    {
-        foreach (GameObject ege in eges)
-        {
-            GameObject wall = Instantiate(wall_coll, transform);
-            wall.transform.position = ege.transform.position;
-            wall.transform.rotation = ege.transform.rotation;
-        }
-    }
 
     private HashSet<GameObject> find_edge_transforms(HashSet<Vector3> spawned_plates_poses)
     {
@@ -179,23 +172,5 @@ public class home_geniration : MonoBehaviour
         }
 
         return edge_transforms;
-    }
-
-    private HashSet<Vector3> get_posible_valuse(float floor_hight)
-    {
-        float floor_border = ((grid_side_amount_of_plates - 1) / 2) * plate_side;
-        HashSet<Vector3> floor_values = new HashSet<Vector3>();
-        int i = 0;
-        for (float v_z = -floor_border; v_z <= floor_border || i < grid_side_amount_of_plates * grid_side_amount_of_plates; v_z += plate_side, i++)
-        {
-            for (float v_x = -floor_border; v_x <= floor_border || i < grid_side_amount_of_plates * grid_side_amount_of_plates; v_x += plate_side)
-            {
-                floor_values.Add(new Vector3(v_x, floor_hight, v_z));
-
-                i++;
-            }
-
-        }
-        return floor_values;
     }
 }

@@ -812,9 +812,6 @@ PrefabInstance:
       addedObject: {fileID: 3554648710018719079}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 69c2bc5cf84464040b0cd7833e8d26c5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -7104377264225307164}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 69c2bc5cf84464040b0cd7833e8d26c5, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3689927704575111968}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 69c2bc5cf84464040b0cd7833e8d26c5, type: 3}
       insertIndex: -1
@@ -974,33 +971,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &-7104377264225307164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5511979058328993815}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0bb1218917506241bcc4d80d3386053, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  min_velosyty: 0.7
-  max_velosyty: 5
-  lerp_velosyty: 0.01
-  max_dist: 14.7
-  destination: {fileID: 0}
-  destList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  damping: 9
-  max_hight: 100
-  hightmult: 0.27
-  wolking_manadger: {fileID: 2584490234986223567}
 --- !u!114 &3689927704575111968
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +19,8 @@ public class choose_dude : MonoBehaviour
 
     private Camera cam;
     [SerializeField] LayerMask mask;
+
+    [SerializeField] camera_whatch camera_whatch;
 
     void Start()
     {
@@ -43,7 +44,6 @@ public class choose_dude : MonoBehaviour
             mouse_pos = cam.ScreenToWorldPoint(mouse_pos);
 
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(cam.transform.position, cam.transform.position - mouse_pos);
 
             if (Physics.Raycast(ray, out RaycastHit hit, 999999, mask))
             {
@@ -51,6 +51,21 @@ public class choose_dude : MonoBehaviour
                 {
                     IsTheDude(hit.collider.GetComponent<head_changer>().prop);
                 }
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector3 mouse_pos = Input.mousePosition;
+            mouse_pos.z = 10f;
+            mouse_pos = cam.ScreenToWorldPoint(mouse_pos);
+
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 999999, mask))
+            {
+                camera_whatch.target = hit.collider.gameObject.transform;
+                camera_whatch.change_pos();
             }
         }
     }

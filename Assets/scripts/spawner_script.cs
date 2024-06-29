@@ -5,25 +5,30 @@ using UnityEngine;
 
 public class spawner_script : MonoBehaviour
 {
+    [SerializeField] manadger_script manadger_script;
+
     public GameObject[] head;
     public GameObject[] eyes;
     public GameObject[] nose;
     public GameObject[] mouth;
 
-    [SerializeField] float spawn_enterval;
+    //[SerializeField] float spawn_enterval;
 
     [SerializeField] GameObject DUDE_prefab;
 
-    public Transform[] destList;
+    //public Transform[] destList;
 
     public HashSet<int[]> all_dudes;
 
-    private float timer;
+    //private float timer;
 
-    [SerializeField] int amound_dudes_to_spawn = 33;
+    int amound_dudes_to_spawn;
 
     void Start()
     {
+        amound_dudes_to_spawn = manadger_script.amound_dudes_to_spawn;
+
+
         all_dudes = new HashSet<int[]>();
 
         for (int heads = 0; heads < head.Length; heads++)
@@ -62,6 +67,8 @@ public class spawner_script : MonoBehaviour
 
     public void spawn_dudes(HashSet<Vector3> poses)
     {
+        amound_dudes_to_spawn = manadger_script.amound_dudes_to_spawn;
+
         for (int i = 0; i < amound_dudes_to_spawn; i++)
         {
             Vector3 pos = poses.ElementAt(Random.Range(0, poses.Count));

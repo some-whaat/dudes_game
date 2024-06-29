@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class walk_to_point : MonoBehaviour
 {
-    
+    /*
     public float min_velosyty;
     public float max_velosyty;
     public float lerp_velosyty = 0.01f;
@@ -43,22 +43,12 @@ public class walk_to_point : MonoBehaviour
 
     void Update()
     {
-        /*
-        leg_dist = (left_target.position - right_target.position).magnitude;
-        hight = max_hight / (max_hight - max_hight * (needed_leg_dist / leg_dist));
-
-        transy = wolking_manadger.point.y * Mathf.Clamp((needed_leg_dist / leg_dist) / 10, 0, 1);
-        */
 
         transy = wolking_manadger.point.y - Mathf.Clamp(hightmult, 0, 1);
         transform.position = new Vector3 (transform.position.x, transy, transform.position.z);
 
         if (transform.position != destination.position) 
         {
-            /*
-            Vector3 lerp = Vector3.Lerp(transform.position, target.position, lerp_velosyty);
-            transform.position = new Vector3(lerp.x, transform.position.y, lerp.z);
-            */
             Vector3 lookPos = destination.position - transform.position;
             Quaternion rotation = Quaternion.LookRotation(new Vector3(-lookPos.x, 0, -lookPos.z));
 
@@ -78,4 +68,5 @@ public class walk_to_point : MonoBehaviour
         destList = other.GetComponent<dest_skript>().near_targets;
         destination = destList[Random.Range(0, destList.Length)];
     }
+*/
 }
