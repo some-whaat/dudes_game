@@ -12,14 +12,19 @@ public class manadger_script : MonoBehaviour
     public int amount_spawned_plates = 44;
     public int amound_dudes_to_spawn = 33;
 
-    void Awake()
+    private void Start()
     {
-        DontDestroyOnLoad(this);
+        amount_of_floors = PlayerPrefs.GetInt("amount_of_floors");
+        amount_spawned_plates = PlayerPrefs.GetInt("amount_spawned_plates", amount_spawned_plates);
+        amound_dudes_to_spawn = PlayerPrefs.GetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
     }
 
     [ContextMenu("create a level!")]
     void RegenirateALevel()
     {
+        PlayerPrefs.SetInt("amount_of_floors", amount_of_floors);
+        PlayerPrefs.SetInt("amount_spawned_plates", amount_spawned_plates);
+        PlayerPrefs.SetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

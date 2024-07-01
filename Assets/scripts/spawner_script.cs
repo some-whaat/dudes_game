@@ -26,8 +26,7 @@ public class spawner_script : MonoBehaviour
 
     void Start()
     {
-        amound_dudes_to_spawn = manadger_script.amound_dudes_to_spawn;
-
+        amound_dudes_to_spawn = PlayerPrefs.GetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
 
         all_dudes = new HashSet<int[]>();
 

@@ -29,9 +29,10 @@ public class home_geniration : MonoBehaviour
 
     void Start()
     {
-        amount_of_floors = manadger_script.amount_of_floors;
-        amount_spawned_plates = manadger_script.amount_spawned_plates;
-
+        
+        amount_of_floors = PlayerPrefs.GetInt("amount_of_floors");
+        amount_spawned_plates = PlayerPrefs.GetInt("amount_spawned_plates", amount_spawned_plates);
+        
 
         spawned_plates_poses = new HashSet<Vector3>();
 
@@ -77,7 +78,7 @@ public class home_geniration : MonoBehaviour
             }
             */
 
-            spawned_plates_poses.UnionWith(spawned_floor_plates_poses);
+        spawned_plates_poses.UnionWith(spawned_floor_plates_poses);
             //all_wall_transforms.UnionWith(wall_transforms);
         }
         
