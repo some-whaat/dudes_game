@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class spawner_script : MonoBehaviour
 {
-    [SerializeField] manadger_script manadger_script;
+    //[SerializeField] manadger_script manadger_script;
 
     public GameObject[] head;
     public GameObject[] eyes;
@@ -66,14 +66,17 @@ public class spawner_script : MonoBehaviour
 
     public void spawn_dudes(HashSet<Vector3> poses)
     {
-        amound_dudes_to_spawn = manadger_script.amound_dudes_to_spawn;
+        amound_dudes_to_spawn = PlayerPrefs.GetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
 
         for (int i = 0; i < amound_dudes_to_spawn; i++)
         {
             Vector3 pos = poses.ElementAt(Random.Range(0, poses.Count));
+            Debug.Log(pos);
             GameObject dude = Instantiate(DUDE_prefab, transform);
+            pos.y += 1;
             dude.transform.position = pos;
             poses.Remove(pos);
         }
+        Debug.Log("spawned");
     }
 }

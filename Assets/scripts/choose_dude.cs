@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class choose_dude : MonoBehaviour
 {
+    [SerializeField] manadger_script manadger_script;
+
     public HashSet<int[]> created_dudes;
 
     public int[] wanted_dude;
@@ -31,11 +33,12 @@ public class choose_dude : MonoBehaviour
 
     private void Update()
     {
-       if (created_dudes.Count >= 3 && isntcalled) 
+       if (created_dudes.Count >= 2 && isntcalled) 
        {
             Dude_to_Find();
             isntcalled = false;
        }
+
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -83,6 +86,8 @@ public class choose_dude : MonoBehaviour
         {
             score += 1;
             scoreText.text = score.ToString();
+
+            manadger_script.new_level();
 
             Dude_to_Find();
         }

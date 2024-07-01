@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class home_geniration : MonoBehaviour
 {
-    [SerializeField] manadger_script manadger_script;
+    //[SerializeField] manadger_script manadger_script;
     [SerializeField] private spawner_script spawner_script;
     [SerializeField] private GameObject center_for_camera;
 
@@ -29,10 +29,10 @@ public class home_geniration : MonoBehaviour
 
     void Start()
     {
-        
         amount_of_floors = PlayerPrefs.GetInt("amount_of_floors");
         amount_spawned_plates = PlayerPrefs.GetInt("amount_spawned_plates", amount_spawned_plates);
         
+
 
         spawned_plates_poses = new HashSet<Vector3>();
 
@@ -68,16 +68,6 @@ public class home_geniration : MonoBehaviour
                 _steirs.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
             }
 
-            /*
-            if (floor_hight != floor_border)
-            {
-                foreach (GameObject wall in wall_transforms)
-                {
-                    if (all_wall_transforms.Contains(wall))
-                }
-            }
-            */
-
         spawned_plates_poses.UnionWith(spawned_floor_plates_poses);
             //all_wall_transforms.UnionWith(wall_transforms);
         }
@@ -105,7 +95,7 @@ public class home_geniration : MonoBehaviour
             spawned_plates.Add(_plate);
         }
 
-
+        Debug.Log("made a level");
         spawner_script.spawn_dudes(spawned_plates_poses);
     }
 

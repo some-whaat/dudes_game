@@ -17,14 +17,16 @@ public class manadger_script : MonoBehaviour
         amount_of_floors = PlayerPrefs.GetInt("amount_of_floors");
         amount_spawned_plates = PlayerPrefs.GetInt("amount_spawned_plates", amount_spawned_plates);
         amound_dudes_to_spawn = PlayerPrefs.GetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
+
     }
 
     [ContextMenu("create a level!")]
-    void RegenirateALevel()
+    public void new_level()
     {
-        PlayerPrefs.SetInt("amount_of_floors", amount_of_floors);
-        PlayerPrefs.SetInt("amount_spawned_plates", amount_spawned_plates);
-        PlayerPrefs.SetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
+
+        PlayerPrefs.SetInt("amount_of_floors", amount_of_floors + 0);
+        PlayerPrefs.SetInt("amount_spawned_plates", amount_spawned_plates + 0);
+        PlayerPrefs.SetInt("amound_dudes_to_spawn", amound_dudes_to_spawn + 0);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
