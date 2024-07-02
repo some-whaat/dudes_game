@@ -7,22 +7,21 @@ using UnityEngine.UI;
 public class choose_dude : MonoBehaviour
 {
     [SerializeField] manadger_script manadger_script;
+    [SerializeField] timer_script timer_script;
+    [SerializeField] dude_visualaiser dude_visualaiser;
+    [SerializeField] camera_whatch camera_whatch;
+    private Camera cam;
 
     public HashSet<int[]> created_dudes;
 
     public int[] wanted_dude;
 
-    [SerializeField] dude_visualaiser dude_visualaiser;
-
-    private int score = 0;
-    [SerializeField] Text scoreText;
-
-    private bool isntcalled = true;
-
-    private Camera cam;
     [SerializeField] LayerMask mask;
 
-    [SerializeField] camera_whatch camera_whatch;
+    private int score = 0;
+    
+    private bool isntcalled = true;
+
 
     void Start()
     {
@@ -67,8 +66,11 @@ public class choose_dude : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit, 999999, mask))
             {
-                camera_whatch.target = hit.collider.gameObject.transform;
-                camera_whatch.change_pos();
+                if (hit.collider.gameObject.tag != "dude")
+                {
+                    camera_whatch.target = hit.collider.gameObject.transform;
+                    camera_whatch.change_pos();
+                }
             }
         }
     }
@@ -85,11 +87,14 @@ public class choose_dude : MonoBehaviour
         if (prop == wanted_dude)
         {
             score += 1;
-            scoreText.text = score.ToString();
 
             manadger_script.new_level();
 
-            Dude_to_Find();
+            //Dude_to_Find();
+        }
+        else
+        {
+            timer_script.timer_time -= 10;
         }
     }
 }

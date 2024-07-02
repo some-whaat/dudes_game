@@ -71,12 +71,9 @@ public class spawner_script : MonoBehaviour
         for (int i = 0; i < amound_dudes_to_spawn; i++)
         {
             Vector3 pos = poses.ElementAt(Random.Range(0, poses.Count));
-            Debug.Log(pos);
             GameObject dude = Instantiate(DUDE_prefab, transform);
-            pos.y += 1;
             dude.transform.position = pos;
             poses.Remove(pos);
         }
-        Debug.Log("spawned");
     }
 }

@@ -95,7 +95,6 @@ public class home_geniration : MonoBehaviour
             spawned_plates.Add(_plate);
         }
 
-        Debug.Log("made a level");
         spawner_script.spawn_dudes(spawned_plates_poses);
     }
 

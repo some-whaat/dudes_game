@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class movement_boids_script : MonoBehaviour
@@ -53,7 +54,11 @@ public class movement_boids_script : MonoBehaviour
 
 
         Vector3 next_pos = rb.transform.position + direction * speed * Time.deltaTime;
-        next_pos.y = hight_y - hight_from_ground;
+        if (!(Mathf.Abs(hight_y - transform.position.y) > 1)) 
+        {
+            next_pos.y = hight_y - hight_from_ground;
+        }
+        
 
         //next_pos.y = wolking_manadger.point.y;
 

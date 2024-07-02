@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class camera_whatch : MonoBehaviour
 {
-    [SerializeField] private Camera cam;
+    private Camera cam;
     public Transform target;
+    [SerializeField] dude_visualaiser_scale_script dude_visualaiser_scale_script;
 
     [SerializeField] float offset;
-
     [SerializeField] float rotation_speed = 180  ;
 
     private Vector3 previouse_pos;
 
+    public float zoom;
+    [SerializeField] private float scroll_speed;
+
+    private void Start()
+    {
+        cam = Camera.main;
+        zoom = cam.orthographicSize;
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -37,6 +46,13 @@ public class camera_whatch : MonoBehaviour
 
             previouse_pos = cam.ScreenToViewportPoint(Input.mousePosition);
         }
+        zoom += Input.mouseScrollDelta.y * scroll_speed;
+        if (zoom < 2)
+        {
+            zoom = 2;
+        }
+        cam.orthographicSize = zoom;
+        dude_visualaiser_scale_script.change_scale(zoom);
     }
 
     public void change_pos()
