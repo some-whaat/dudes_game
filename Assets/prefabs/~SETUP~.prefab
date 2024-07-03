@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  dude_visualaiser_scale_script: {fileID: 0}
   offset: 77
   rotation_speed: 90
   zoom: 0
@@ -419,7 +420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9634d6ca5d2c94e965ec3edc7bcbdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera_whatch: {fileID: 6128337433329752073}
 --- !u!1 &5050376466467458613
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,6 +913,7 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: f88ffb2f75ccb1540a680aac7a5bbd04, type: 3}
   - {fileID: 919132149155446097, guid: 6f9fc4f4e1e3a964eb471596e91040df, type: 3}
   - {fileID: 919132149155446097, guid: cb25114869ab2144daa09033541d6f73, type: 3}
+  - {fileID: 919132149155446097, guid: 00828347a2b9bdf45a03d17d1bce102f, type: 3}
   eyes:
   - {fileID: 919132149155446097, guid: 8ce44c181a092e8479778f2e70900445, type: 3}
   - {fileID: 919132149155446097, guid: aa8c7c3880bda6744a4b2d684b7f41c3, type: 3}

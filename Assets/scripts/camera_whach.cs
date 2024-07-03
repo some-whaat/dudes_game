@@ -46,7 +46,7 @@ public class camera_whatch : MonoBehaviour
 
             previouse_pos = cam.ScreenToViewportPoint(Input.mousePosition);
         }
-        zoom += Input.mouseScrollDelta.y * scroll_speed;
+        zoom -= Input.mouseScrollDelta.y * scroll_speed;
         if (zoom < 2)
         {
             zoom = 2;
