@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class home_geniration : MonoBehaviour
+public class home_geniration_for_title_screen : MonoBehaviour
 {
     //[SerializeField] manadger_script manadger_script;
     [SerializeField] private spawner_script spawner_script;
@@ -19,20 +19,18 @@ public class home_geniration : MonoBehaviour
     private float plate_side = 5f;
     private float dist_between_floors = 6.5f;
 
-    int amount_of_floors = 5;
-    int amount_spawned_plates = 5;
+    [SerializeField] int amount_of_floors = 5;
+    [SerializeField] int amount_spawned_plates = 22;
     [SerializeField] private int ornament_fiequoncy = 5;
 
 
     HashSet<Vector3> spawned_plates_poses;
 
+
+    [SerializeField] GameObject camera_center;
+
     void Start()
     {
-        amount_of_floors = PlayerPrefs.GetInt("amount_of_floors");
-        amount_spawned_plates = PlayerPrefs.GetInt("amount_spawned_plates", amount_spawned_plates);
-        
-
-
         spawned_plates_poses = new HashSet<Vector3>();
 
         float floor_border = (amount_of_floors - 1) * dist_between_floors;
@@ -49,19 +47,12 @@ public class home_geniration : MonoBehaviour
             HashSet<Vector3> spawned_floor_plates_poses = generate_all_floor_poses(floor_center_plate_pos);
 
             HashSet<GameObject> wall_transforms = find_edge_transforms(spawned_floor_plates_poses);
-            
+
             if (floor_hight != -floor_border)
             {
                 GameObject random_wall = wall_transforms.ElementAt(Random.Range(0, wall_transforms.Count));
 
-                floor_center_plate_pos = random_wall.transform.position;// + plate_side * -random_wall.transform.forward;// new Vector3(-1, 0, 0); 
-
-                Debug.Log(-random_wall.transform.forward);
-                Debug.Log(floor_center_plate_pos);
-                Debug.Log(find_neibors(random_wall.transform.position).ElementAt(0));
-                Debug.Log(find_neibors(random_wall.transform.position).ElementAt(1));
-                Debug.Log(find_neibors(random_wall.transform.position).ElementAt(2));
-                Debug.Log(find_neibors(random_wall.transform.position).ElementAt(3));
+                floor_center_plate_pos = random_wall.transform.position;// + plate_side * -random_wall.transform.forward;
 
                 Vector3 steir_pose = random_wall.transform.position;
                 steir_pose.y -= 3;
@@ -72,12 +63,18 @@ public class home_geniration : MonoBehaviour
                 _steirs.transform.position = steir_pose;
                 _steirs.transform.rotation = random_wall.transform.rotation;
                 _steirs.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
-            }
 
-        spawned_plates_poses.UnionWith(spawned_floor_plates_poses);
+                if (floor_hight == floor_border - dist_between_floors * Mathf.Round((amount_of_floors - 1) / 2))
+                {
+                    camera_center.transform.position = steir_pose;
+                }
+            }
+            
+
+            spawned_plates_poses.UnionWith(spawned_floor_plates_poses);
             //all_wall_transforms.UnionWith(wall_transforms);
         }
-        
+
 
         HashSet<GameObject> spawned_plates = new HashSet<GameObject>();
 
@@ -85,7 +82,7 @@ public class home_geniration : MonoBehaviour
         {
             GameObject _plate = Instantiate(plate, transform);
             GameObject plate_mash = Instantiate(plate_meshes.ElementAt(Random.Range(0, plate_meshes.Length)));
-            
+
             plate_mash.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
 
             if (Random.Range(0, ornament_fiequoncy) == 1)
@@ -96,7 +93,7 @@ public class home_geniration : MonoBehaviour
             }
 
             plate_mash.transform.parent = _plate.transform;
-            
+
             _plate.transform.position = pos;
             spawned_plates.Add(_plate);
         }
@@ -122,24 +119,24 @@ public class home_geniration : MonoBehaviour
 
     HashSet<Vector3> generate_all_floor_poses(Vector3 curr_plate_pos)
     {
-        HashSet<Vector3> spawned_floor_plates_poses = new HashSet<Vector3>();
-        spawned_floor_plates_poses.Add(curr_plate_pos);
+        HashSet<Vector3> spawned_plates_poses = new HashSet<Vector3>();
+        spawned_plates_poses.Add(curr_plate_pos);
 
-        while (spawned_floor_plates_poses.Count < amount_spawned_plates)
+        while (spawned_plates_poses.Count < amount_spawned_plates)
         {
             HashSet<Vector3> all_posible_neibors = find_neibors(curr_plate_pos);
-            all_posible_neibors.ExceptWith(spawned_floor_plates_poses);
+            all_posible_neibors.ExceptWith(spawned_plates_poses);
 
             if (all_posible_neibors.Count != 0)
             {
-                curr_plate_pos = all_posible_neibors.ElementAt(Random.Range(0, all_posible_neibors.Count));
-                spawned_floor_plates_poses.Add(curr_plate_pos);
+                curr_plate_pos = all_posible_neibors.ElementAt(Random.Range(0, all_posible_neibors.Count - 1));
+                spawned_plates_poses.Add(curr_plate_pos);
             }
 
-            curr_plate_pos = spawned_floor_plates_poses.ElementAt(Random.Range(0, spawned_floor_plates_poses.Count));
+            curr_plate_pos = spawned_plates_poses.ElementAt(Random.Range(0, spawned_plates_poses.Count - 1));
         }
 
-        return spawned_floor_plates_poses;
+        return spawned_plates_poses;
     }
 
 
