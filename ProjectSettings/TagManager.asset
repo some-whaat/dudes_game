@@ -8,6 +8,7 @@ TagManager:
   - spawner
   - dude
   - wall
+  - manager
   layers:
   - Default
   - TransparentFX

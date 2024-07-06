@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class manadger_script : MonoBehaviour
 {
     //[SerializeField] spawner_script spawner_script;
-    //[SerializeField] home_geniration home_geniration;
+    [SerializeField] home_geniration home_geniration;
 
     public int amount_of_floors = 5;
     public int amount_spawned_plates = 44;
@@ -21,6 +21,8 @@ public class manadger_script : MonoBehaviour
         amound_dudes_to_spawn = PlayerPrefs.GetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
         nomber_of_iteration = PlayerPrefs.GetInt("nomber_of_iteration", nomber_of_iteration);
         nomber_of_iteration ++;
+
+        home_geniration.genirate_level();
     }
 
     [ContextMenu("create a level!")]

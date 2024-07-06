@@ -10,6 +10,7 @@ public class choose_dude : MonoBehaviour
     [SerializeField] timer_script timer_script;
     [SerializeField] dude_visualaiser dude_visualaiser;
     [SerializeField] camera_whatch camera_whatch;
+
     private Camera cam;
 
     public HashSet<int[]> created_dudes;
@@ -51,7 +52,7 @@ public class choose_dude : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag == "dude")
                 {
-                    IsTheDude(hit.collider.GetComponent<head_changer>().prop);
+                    IsTheDude(hit.collider.GetComponent<head_changer>().prop, hit.collider.GetComponent<animation_script>());
                 }
             }
         }
@@ -82,13 +83,15 @@ public class choose_dude : MonoBehaviour
         dude_visualaiser.SetDude(wanted_dude);
     }
 
-    public void IsTheDude(int[] prop)
+    public void IsTheDude(int[] prop, animation_script animation_script)
     {
         if (prop == wanted_dude)
         {
             score += 1;
 
-            manadger_script.new_level();
+            StartCoroutine(animation_script.catch_animation());
+
+            //manadger_script.new_level();
 
             //Dude_to_Find();
         }

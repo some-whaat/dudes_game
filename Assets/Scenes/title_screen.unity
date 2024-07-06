@@ -251,8 +251,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1350883582328332846, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1350883582328332846, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
+      propertyPath: camera_center
+      value: 
+      objectReference: {fileID: 2038451005}
+    - target: {fileID: 1350883582328332846, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
+      propertyPath: spawner_script
+      value: 
+      objectReference: {fileID: 2072785935}
     - target: {fileID: 5819345944994248675, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
       propertyPath: m_Name
       value: home genirator
@@ -317,7 +325,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322956953}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66cb80aa6a52ef548a9dc9387e7b0c18, type: 3}
   m_Name: 
@@ -339,6 +347,17 @@ MonoBehaviour:
   amount_spawned_plates: 44
   ornament_fiequoncy: 5
   camera_center: {fileID: 2038451005}
+--- !u!114 &322956955 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1350883582328332846, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
+  m_PrefabInstance: {fileID: 322956952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322956953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e927dcb82a6cb468eb136b81bfbb49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,8 +1271,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2038451007}
   - component: {fileID: 2038451006}
+  - component: {fileID: 2038451008}
   m_Layer: 0
-  m_Name: camera_rotater
+  m_Name: camera_rotater_manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1288,6 +1308,22 @@ Transform:
   - {fileID: 961739753}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2038451008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038451005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42043b05b76b474a87e034131140104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount_of_floors: 4
+  amount_spawned_plates: 44
+  amound_dudes_to_spawn: 22
+  home_geniration: {fileID: 322956955}
 --- !u!1001 &2072785934
 PrefabInstance:
   m_ObjectHideFlags: 0
