@@ -338,7 +338,7 @@ MonoBehaviour:
   left_prosigual_walking: {fileID: 2496930143711957743}
   right_prosigual_walking: {fileID: 9097847346882799909}
   step_movement_time: 0.017
-  math_method_influence: 0.3
+  math_method_influence: 0.29
   step_hight: 0.3499
   step_time: 0.1
   min_step_dist: 0.92
@@ -1046,11 +1046,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wolking_manadger: {fileID: 2584490234986223567}
   movement_boids_script: {fileID: 3748895148270837810}
-  coll: {fileID: 2970293417174709332}
-  catch_animation_len: 10
+  catch_animation_len: 0.5
   catch_animation_speed: 1
   catch_animation_radius: 0.02
   catch_animation_one_move_time: 0.1
+  catch_animation_cube_side: 0.17
+  catch_animation_hight: 0.4
 --- !u!4 &6731477284159085947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2149361076434853949, guid: 69c2bc5cf84464040b0cd7833e8d26c5, type: 3}

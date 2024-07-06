@@ -308,51 +308,14 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5819345944994248675, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 322956954}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
---- !u!1 &322956953 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5819345944994248675, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
-  m_PrefabInstance: {fileID: 322956952}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &322956954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322956953}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66cb80aa6a52ef548a9dc9387e7b0c18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawner_script: {fileID: 2072785935}
-  colors:
-  - {r: 1, g: 0.90196085, b: 0.882353, a: 0}
-  - {r: 0.8745099, g: 0.60784316, b: 0.7294118, a: 0}
-  - {r: 0.5372549, g: 0.5411765, b: 0.60784316, a: 0}
-  plate_meshes:
-  - {fileID: 5459810829043401177, guid: de55da07b08f3954cb1d5dd2d75c7e18, type: 3}
-  plate_ornaments:
-  - {fileID: 919132149155446097, guid: 0fdcd04f8465986418349bf63b811913, type: 3}
-  - {fileID: 919132149155446097, guid: f014c83ebdb10bc42b4f8426ad4d3f09, type: 3}
-  plate: {fileID: 1927125606229036755, guid: 9216d3443da2ebd45956423bd69572e7, type: 3}
-  wall_coll: {fileID: 1555623924044153249, guid: 6d790e2ceb7fd724db1b3180da655ded, type: 3}
-  stairs: {fileID: 4929476852316421578, guid: dc4ee396e35210a4c863399ad9280dd3, type: 3}
-  amount_of_floors: 4
-  amount_spawned_plates: 44
-  ornament_fiequoncy: 5
-  camera_center: {fileID: 2038451005}
 --- !u!114 &322956955 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1350883582328332846, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
   m_PrefabInstance: {fileID: 322956952}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322956953}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63e927dcb82a6cb468eb136b81bfbb49, type: 3}

@@ -9,7 +9,7 @@ public class animation_script : MonoBehaviour
     manadger_script manadger_script;
     [SerializeField] wolking_manadger wolking_manadger;
     [SerializeField] movement_boids_script movement_boids_script;
-    [SerializeField] Collider coll;
+    //[SerializeField] Collider coll;
     Rigidbody rb;
 
     [SerializeField] float catch_animation_len = 100f;
@@ -17,6 +17,7 @@ public class animation_script : MonoBehaviour
     [SerializeField] float catch_animation_radius = 0.001f;
     [SerializeField] float catch_animation_one_move_time = 0.01f;
     [SerializeField] float catch_animation_cube_side = 0.5f;
+    [SerializeField] float catch_animation_hight = 0.4f;
 
     /*
     public void start_catch_animation()
@@ -35,11 +36,12 @@ public class animation_script : MonoBehaviour
         rb.isKinematic = true;
         wolking_manadger.enabled = false;
         movement_boids_script.enabled = false;
-        coll.enabled = false;
+        //coll.enabled = false;
 
-        manadger_script = GameObject.FindWithTag("manager").GetComponent< manadger_script>();
+        manadger_script = GameObject.FindWithTag("manager").GetComponent<manadger_script>();
 
-
+        transform.position -= new Vector3(0, catch_animation_hight, 0);
+        Vector3 original_pos = transform.position;
         for (float i = 0; i < catch_animation_len; i += Time.deltaTime)
         {
             float angle = i * catch_animation_speed;
@@ -47,7 +49,7 @@ public class animation_script : MonoBehaviour
             sferical_pos += new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * catch_animation_radius + transform.position;
             sferical_pos.y -= 0.3f;
 
-            Vector3 random_pos = new Vector3(Random.Range(transform.position.x - catch_animation_cube_side, transform.position.x + catch_animation_cube_side), Random.Range(transform.position.y - catch_animation_cube_side, transform.position.y + catch_animation_cube_side), Random.Range(transform.position.z - catch_animation_cube_side, transform.position.z + catch_animation_cube_side));
+            Vector3 random_pos = new Vector3(Random.Range(original_pos.x - catch_animation_cube_side, original_pos.x + catch_animation_cube_side), Random.Range(original_pos.y - catch_animation_cube_side, original_pos.y + catch_animation_cube_side), Random.Range(original_pos.z - catch_animation_cube_side, original_pos.z + catch_animation_cube_side));
 
             Vector3 start_pos = transform.position;
             //Vector3 end_pos = (sferical_pos + random_pos) / 2;
@@ -57,7 +59,9 @@ public class animation_script : MonoBehaviour
             while (Vector3.Distance(transform.position, end_pos) > 0)
             {
                 current_movement_time += Time.deltaTime;
-                transform.position = Vector3.Lerp(start_pos, end_pos, Mathf.Pow(current_movement_time / catch_animation_one_move_time, 2));
+                //transform.position = Vector3.Lerp(start_pos, end_pos, Mathf.Pow(current_movement_time / catch_animation_one_move_time, 2));
+                transform.position = Vector3.Lerp(start_pos, end_pos, current_movement_time / catch_animation_one_move_time);
+
                 yield return null;
             }
 
