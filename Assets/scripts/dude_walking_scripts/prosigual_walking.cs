@@ -6,10 +6,13 @@ using UnityEngine;
 public class prosigual_walking : MonoBehaviour
 {
     public Vector3 carent_position;
-    public target_to_go target_to_go;
+    public bool is_steping = false;
+
+    [SerializeField] target_to_go target_to_go;
+    [SerializeField] LayerMask ground_mask;
 
     Ray ray;
-    public LayerMask ground_mask;
+    
 
     void Start()
     {
@@ -22,8 +25,10 @@ public class prosigual_walking : MonoBehaviour
         Vector3 lerp = Vector3.Lerp(transform.position, carent_position, step_velosyty * Time.deltaTime);
         transform.position = lerp;
         */
-
-        transform.position = carent_position;
+        if (!is_steping)
+        {
+            transform.position = carent_position;
+        }
     }
 
     public void MakeStep(Vector3 new_pos)

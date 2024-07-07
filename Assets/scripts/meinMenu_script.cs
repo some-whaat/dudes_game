@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +15,7 @@ public class meinMenu_script : MonoBehaviour
         PlayerPrefs.SetInt("amound_dudes_to_spawn", siart_amound_dudes_to_spawn);
         PlayerPrefs.SetInt("nomber_of_iteration", 1);
 
+        DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void quit_the_game()

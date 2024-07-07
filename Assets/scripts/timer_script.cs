@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class timer_script : MonoBehaviour
 
         if (timer_time <= 0.0f)
         {
+            DOTween.KillAll();
             SceneManager.LoadScene(0);
         }
 

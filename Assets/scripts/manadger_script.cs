@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,7 @@ public class manadger_script : MonoBehaviour
         PlayerPrefs.SetInt("amound_dudes_to_spawn", amound_dudes_to_spawn + 3);
         PlayerPrefs.SetInt("nomber_of_iteration", nomber_of_iteration);
 
+        DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
