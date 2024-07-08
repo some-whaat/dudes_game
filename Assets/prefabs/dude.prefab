@@ -1090,12 +1090,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wolking_manadger: {fileID: 2584490234986223567}
   movement_boids_script: {fileID: 3748895148270837810}
-  catch_animation_len: 0.15
-  catch_animation_speed: 1
-  catch_animation_radius: 0.02
-  catch_animation_one_move_time: 0.1
-  catch_animation_cube_side: 0.17
+  catch_animation_duration: 5
+  catch_animation_strength: 0.19
+  catch_animation_douwning_duration: 0.1
   catch_animation_hight: 0.4
+  catch_animation_curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &6731477284159085947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2149361076434853949, guid: 69c2bc5cf84464040b0cd7833e8d26c5, type: 3}

@@ -89,7 +89,7 @@ public class choose_dude : MonoBehaviour
         {
             score += 1;
 
-            StartCoroutine(animation_script.catch_animation());
+            animation_script.catch_animation();
 
             //manadger_script.new_level();
 

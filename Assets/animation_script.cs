@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 public class animation_script : MonoBehaviour
 {
@@ -12,12 +10,11 @@ public class animation_script : MonoBehaviour
     //[SerializeField] Collider coll;
     Rigidbody rb;
 
-    [SerializeField] float catch_animation_len = 100f;
-    [SerializeField] float catch_animation_speed = 0.01f;
-    [SerializeField] float catch_animation_radius = 0.001f;
-    [SerializeField] float catch_animation_one_move_time = 0.01f;
-    [SerializeField] float catch_animation_cube_side = 0.5f;
+    [SerializeField] float catch_animation_duration = 100f;
+    [SerializeField] float catch_animation_strength = 10f;
+    [SerializeField] float catch_animation_douwning_duration = 0.7f;
     [SerializeField] float catch_animation_hight = 0.4f;
+    [SerializeField] AnimationCurve catch_animation_curve;
 
     /*
     public void start_catch_animation()
@@ -27,7 +24,7 @@ public class animation_script : MonoBehaviour
     }
     */
 
-    public IEnumerator catch_animation()
+    public void catch_animation()
     {
         rb = GetComponent<Rigidbody>();
 
@@ -40,35 +37,14 @@ public class animation_script : MonoBehaviour
 
         manadger_script = GameObject.FindWithTag("manager").GetComponent<manadger_script>();
 
-        transform.position -= new Vector3(0, catch_animation_hight, 0);
-        Vector3 original_pos = transform.position;
-        for (float i = 0; i < catch_animation_len; i += Time.deltaTime)
-        {
-            float angle = i * catch_animation_speed;
-            Vector3 sferical_pos = Vector3.zero;
-            sferical_pos += new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * catch_animation_radius + transform.position;
-            sferical_pos.y -= 0.3f;
 
-            Vector3 random_pos = new Vector3(Random.Range(original_pos.x - catch_animation_cube_side, original_pos.x + catch_animation_cube_side), Random.Range(original_pos.y - catch_animation_cube_side, original_pos.y + catch_animation_cube_side), Random.Range(original_pos.z - catch_animation_cube_side, original_pos.z + catch_animation_cube_side));
+        Sequence sequence = DOTween.Sequence();
 
-            Vector3 start_pos = transform.position;
-            //Vector3 end_pos = (sferical_pos + random_pos) / 2;
-            Vector3 end_pos = random_pos;
+        sequence.Append(transform.DOMoveY(transform.position.y - catch_animation_hight, catch_animation_douwning_duration).SetEase(Ease.OutCubic));
+        sequence.Append(transform.DOShakePosition(catch_animation_duration, catch_animation_strength, fadeOut: false));//.SetEase(Ease.InCubic));
 
-            float current_movement_time = 0;
-            while (Vector3.Distance(transform.position, end_pos) > 0)
-            {
-                current_movement_time += Time.deltaTime;
-                //transform.position = Vector3.Lerp(start_pos, end_pos, Mathf.Pow(current_movement_time / catch_animation_one_move_time, 2));
-                transform.position = Vector3.Lerp(start_pos, end_pos, current_movement_time / catch_animation_one_move_time);
-
-                yield return null;
-            }
-
-            
-            yield return null;
-        }
-
-        manadger_script.new_level();
+        sequence.onComplete = manadger_script.new_level;
+        //transform.DOKill();
+        //manadger_script.new_level();
     }
 }
