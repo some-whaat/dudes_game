@@ -9,7 +9,7 @@ public class prosigual_walking : MonoBehaviour
     public bool is_steping = false;
 
     [SerializeField] target_to_go target_to_go;
-    [SerializeField] LayerMask ground_mask;
+
 
     Ray ray;
     
@@ -21,21 +21,18 @@ public class prosigual_walking : MonoBehaviour
 
     void Update()
     {
-        /*
-        Vector3 lerp = Vector3.Lerp(transform.position, carent_position, step_velosyty * Time.deltaTime);
-        transform.position = lerp;
-        */
         if (!is_steping)
         {
             transform.position = carent_position;
         }
     }
 
+    /*
     public void MakeStep(Vector3 new_pos)
     {
         carent_position = ProjetOnPlain((new_pos + target_to_go.point) / 2);
     }
-    /*
+
     //public IEnumerator MakeStep(Vector3 new_pos)
     public void MakeStep(Vector3 new_pos)
     {
@@ -60,7 +57,7 @@ public class prosigual_walking : MonoBehaviour
 
 
     }
-*/
+
     public Vector3 ProjetOnPlain(Vector3 pos)
     {
         ray = new Ray(pos, transform.up);
@@ -77,7 +74,7 @@ public class prosigual_walking : MonoBehaviour
         return pos;
     }
 
-    /*
+
     public IEnumerator MakeStep(Vector3 new_pos)
     {
         //carent_position = new_pos;

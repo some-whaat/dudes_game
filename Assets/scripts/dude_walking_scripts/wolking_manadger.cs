@@ -10,25 +10,25 @@ public class wolking_manadger : MonoBehaviour
     public LayerMask ground_mask;
 
     public Vector3 point;
-    private float timer;
-    private float long_timer;
+    public float timer;
+    public float long_timer;
     private Vector3 ellipseCenter;
 
-    [SerializeField] prosigual_walking left_prosigual_walking;
-    [SerializeField] prosigual_walking right_prosigual_walking;
+    public prosigual_walking left_prosigual_walking;
+    public prosigual_walking right_prosigual_walking;
 
     [SerializeField] private float step_movement_time = 0.7f;
     //[SerializeField] private float mid_step_vaiting_time = 0.0008f;
 
-    [SerializeField] private float math_method_influence = 0.75f;
+    public float math_method_influence = 0.75f;
 
     [SerializeField] private float step_hight = 1;
     [SerializeField] float step_time;
     [SerializeField] float min_step_dist;
     [SerializeField] float restep_time;
 
-    [SerializeField] target_to_go left_target_to_go;
-    [SerializeField] target_to_go right_target_to_go;
+    public target_to_go left_target_to_go;
+    public target_to_go right_target_to_go;
 
     [SerializeField] float raydist = 5;
 
@@ -55,20 +55,9 @@ public class wolking_manadger : MonoBehaviour
 
         ellipseCenter = (left_transform + right_transform) / 2f;
 
-        if ((((timer > step_time) && (point -  ellipseCenter).magnitude > min_step_dist) || (long_timer > restep_time && (point != ellipseCenter))) && !is_stepping)
+        if ((((timer > step_time) && (point - ellipseCenter).magnitude > min_step_dist) || (long_timer > restep_time && (point != ellipseCenter))) && !is_stepping)
         {
-            if (is_left_turn)//(FindFarest(left_transform, right_transform, point))
-            {
-                MakeStep(left_prosigual_walking, left_target_to_go);
-                //MakeStep(left_prosigual_walking, ProjetOnPlain((point - right_prosigual_walking.transform.position) + (point - new Vector3())), left_target_to_go);
-                is_left_turn = false;
-            }
-            else
-            {
-                MakeStep(right_prosigual_walking, right_target_to_go);
-                //MakeStep(right_prosigual_walking, ProjetOnPlain((point - left_prosigual_walking.transform.position) + (point - new Vector3())), right_target_to_go);
-                is_left_turn = true;
-            }
+            DesideAndMakeStep();
 
             timer = 0;
             long_timer = 0;
@@ -77,9 +66,25 @@ public class wolking_manadger : MonoBehaviour
         movement_boids_script.hight_y = point.y;
     }
 
-    public void MakeStep(prosigual_walking prosigual_walking, target_to_go target_to_go)
+    public void DesideAndMakeStep()
     {
-        Vector3 vec = (target_to_go.point - prosigual_walking.transform.position) + (target_to_go.point - new Vector3());
+        if (is_left_turn)//(FindFarest(left_transform, right_transform, point))
+        {
+            MakeStep(left_prosigual_walking, left_target_to_go);
+            //MakeStep(left_prosigual_walking, ProjetOnPlain((point - right_prosigual_walking.transform.position) + (point - new Vector3())), left_target_to_go);
+            is_left_turn = false;
+        }
+        else
+        {
+            MakeStep(right_prosigual_walking, right_target_to_go);
+            //MakeStep(right_prosigual_walking, ProjetOnPlain((point - left_prosigual_walking.transform.position) + (point - new Vector3())), right_target_to_go);
+            is_left_turn = true;
+        }
+    }
+
+    void MakeStep(prosigual_walking prosigual_walking, target_to_go target_to_go)
+    {
+        Vector3 vec = 2*target_to_go.point - prosigual_walking.transform.position;
         vec.y = target_to_go.point.y;
 
         Vector3 end_pos = ProjetOnPlain(math_method_influence * vec + (1 - math_method_influence) * target_to_go.point);
@@ -163,12 +168,12 @@ public class wolking_manadger : MonoBehaviour
     }
     */
 
-    public bool FindFarest(Vector3 point1, Vector3 point2, Vector3 calkpoint)
+    bool FindFarest(Vector3 point1, Vector3 point2, Vector3 calkpoint)
     {
         return (point1 - calkpoint).magnitude > (point2 - calkpoint).magnitude; //true if point1 is the farest
     }
 
-    public Vector3 ProjetOnPlain(Vector3 pos)
+    Vector3 ProjetOnPlain(Vector3 pos)
     {
         raydown = new Ray(pos, -transform.up);
         if (Physics.Raycast(raydown, out RaycastHit hitdown, raydist, ground_mask))
