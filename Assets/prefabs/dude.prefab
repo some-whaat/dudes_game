@@ -335,6 +335,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   point: {x: 0, y: 0, z: 0}
+  timer: 0
+  long_timer: 0
   left_prosigual_walking: {fileID: 2496930143711957743}
   right_prosigual_walking: {fileID: 9097847346882799909}
   step_movement_time: 0.1
@@ -446,8 +448,8 @@ MonoBehaviour:
     m_TargetPositionWeight: 1
     m_TargetRotationWeight: 1
     m_HintWeight: 1
-    m_MaintainTargetPositionOffset: 1
-    m_MaintainTargetRotationOffset: 1
+    m_MaintainTargetPositionOffset: 0
+    m_MaintainTargetRotationOffset: 0
 --- !u!1 &5425145392678886825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1089,7 @@ MonoBehaviour:
   catch_animation_duration: 5
   catch_animation_strength: 0.19
   catch_animation_douwning_duration: 0.1
+  catch_animation_look_duration: 0.3
   catch_animation_hight: 0.4
   catch_animation_curve:
     serializedVersion: 2
@@ -1112,12 +1115,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  catch_animation_legs_movement_time: 0.1
-  catch_animation_legs_left_pos: {x: 0.486, y: -2.268, z: -1.078}
-  catch_animation_legs_right_pos: {x: -0.073, y: -2.268, z: -0.835}
-  ground_mask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!4 &6731477284159085947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2149361076434853949, guid: 69c2bc5cf84464040b0cd7833e8d26c5, type: 3}
