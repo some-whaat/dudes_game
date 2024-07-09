@@ -20,6 +20,7 @@ public class animation_script : MonoBehaviour
 
     bool activated = false;
 
+    /*
     private void Update()
     {
         if (activated)
@@ -27,6 +28,7 @@ public class animation_script : MonoBehaviour
             transform.LookAt(-Camera.main.transform.position);
         }
     }
+    */
 
     public void catch_animation()
     {
@@ -58,7 +60,7 @@ public class animation_script : MonoBehaviour
 
         Sequence sequence = DOTween.Sequence();
 
-        //sequence.Append(transform.DOLookAt(-Camera.main.transform.position, catch_animation_look_duration).SetEase(Ease.InOutCubic));
+        sequence.Append(transform.DOLookAt(-Camera.main.transform.position, catch_animation_look_duration).SetEase(Ease.InOutCubic));
         sequence.Append(transform.DOMoveY(transform.position.y - catch_animation_hight, catch_animation_douwning_duration).SetEase(Ease.OutCubic));
         sequence.Append(transform.DOShakePosition(catch_animation_duration, catch_animation_strength, fadeOut: false));//.SetEase(Ease.InCubic));
 

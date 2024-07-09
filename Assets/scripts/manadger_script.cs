@@ -15,6 +15,13 @@ public class manadger_script : MonoBehaviour
 
     private int nomber_of_iteration;
 
+    //
+
+    [SerializeField] speeking_manager speeking_manager;
+
+    [TextArea(3, 16)]
+    public string[] sentences;
+
     private void Start()
     {
         amount_of_floors = PlayerPrefs.GetInt("amount_of_floors");
@@ -24,6 +31,10 @@ public class manadger_script : MonoBehaviour
         nomber_of_iteration ++;
 
         home_geniration.genirate_level();
+        if (PlayerPrefs.GetInt("was_tutorial") != 1)
+        {
+            speeking_manager.start_speaking(sentences);
+        }
     }
 
     [ContextMenu("create a level!")]
