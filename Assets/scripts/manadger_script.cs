@@ -19,7 +19,7 @@ public class manadger_script : MonoBehaviour
 
     [SerializeField] speeking_manager speeking_manager;
 
-    [TextArea(3, 16)]
+    //[TextArea(3, 16)]
     public string[] sentences;
 
     private void Start()

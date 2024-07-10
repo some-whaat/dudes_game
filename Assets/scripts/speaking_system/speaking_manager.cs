@@ -3,12 +3,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections;
+using TMPro;
 
 public class speeking_manager : MonoBehaviour
 {
-    [SerializeField] Text speech_text;
+    [SerializeField] TMP_Text speech_text;
+    [SerializeField] GameObject bubble;
 
     [SerializeField] float typing_speed;
+    [SerializeField] float bubble_scale = 120f;
+    [SerializeField] float bubble_emerging_dur = 1f;
 
     private Queue<string> speach_queue;
     private string curr_sent;
@@ -20,16 +24,17 @@ public class speeking_manager : MonoBehaviour
     {
         if (is_speaking)
         {
-            if (Input.GetButtonDown("space"))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (is_typing)
                 {
-                    StopCoroutine("display_next_sent");
+                    StopCoroutine("typing_animation");
                     speech_text.text = curr_sent;
+                    is_typing = false;
                 }
                 else
                 {
-                    StartCoroutine("display_next_sent");
+                    display_next_sent();
                 }
             }
         }
@@ -37,7 +42,8 @@ public class speeking_manager : MonoBehaviour
 
     public void start_speaking(string[] in_sentences)
     {
-        //вщбавить бабл
+        bubble.transform.DOScale(bubble_scale, bubble_emerging_dur).SetEase(Ease.OutBounce);
+
         is_speaking = true;
         speach_queue = new Queue<string>();
 
@@ -57,6 +63,7 @@ public class speeking_manager : MonoBehaviour
         }
         else
         {
+            speech_text.text = "";
             curr_sent = speach_queue.Dequeue();
             StartCoroutine("typing_animation");
         }
@@ -79,9 +86,10 @@ public class speeking_manager : MonoBehaviour
 
     void end_speach()
     {
+        is_speaking = false;
         curr_sent = "";
         speech_text.text = "";
-        // убрать бабл
+        bubble.transform.DOScale(0, bubble_emerging_dur).SetEase(Ease.InCubic);
     }
 
 }
