@@ -27,6 +27,19 @@ public class home_geniration : MonoBehaviour
 
     HashSet<Vector3> spawned_plates_poses;
 
+
+    private Vector3[] _angles;
+
+    private void Start()
+    {
+        _angles = new Vector3[4];
+        _angles[0] = new Vector3(0, 0, 0);
+        _angles[1] = new Vector3(0, 90f, 0);
+        _angles[2] = new Vector3(0, 180f, 0);
+        _angles[3] = new Vector3(0, 270f, 0);
+
+    }
+
     public void genirate_level()
     {
         amount_of_floors = PlayerPrefs.GetInt("amount_of_floors");
@@ -92,6 +105,7 @@ public class home_geniration : MonoBehaviour
                 GameObject plate_ornament = Instantiate(plate_ornaments.ElementAt(Random.Range(0, plate_ornaments.Length)));
                 plate_ornament.GetComponent<Renderer>().material.color = colors[Random.Range(0, colors.Length)];
                 plate_ornament.transform.parent = _plate.transform;
+                plate_ornament.transform.eulerAngles += _angles[Random.Range(0, _angles.Length)];
             }
 
             plate_mash.transform.parent = _plate.transform;

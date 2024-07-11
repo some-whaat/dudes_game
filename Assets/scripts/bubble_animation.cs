@@ -9,7 +9,14 @@ public class bubble_animation : MonoBehaviour
 
     void Start()
     {
-        transform.DORotate(transform.eulerAngles - new Vector3(9, 0, 0), 0.7f).SetEase(Ease.InOutSine).SetLoops(-1, loopType: LoopType.Yoyo); //добавить кучу перемкнных
+        
+    }
+
+    private void Update()
+    {
+        float dist = Vector3.Distance(target_obj.position, transform.position);
+
+        Vector2.MoveTowards(transform.position, target_obj.position, (dist * 0.001f) + dist * 0.001f * Time.deltaTime);
     }
 
 }
