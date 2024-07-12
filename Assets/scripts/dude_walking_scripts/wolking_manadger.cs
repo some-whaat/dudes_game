@@ -63,7 +63,10 @@ public class wolking_manadger : MonoBehaviour
             long_timer = 0;
         }
 
-        movement_boids_script.hight_y = point.y;
+        if (movement_boids_script != null)
+        {
+            movement_boids_script.hight_y = point.y;
+        }
     }
 
     public void DesideAndMakeStep()

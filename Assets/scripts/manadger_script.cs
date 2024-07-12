@@ -30,11 +30,12 @@ public class manadger_script : MonoBehaviour
         nomber_of_iteration = PlayerPrefs.GetInt("nomber_of_iteration", nomber_of_iteration);
         nomber_of_iteration ++;
 
-        home_geniration.genirate_level();
         if (PlayerPrefs.GetInt("was_tutorial") != 1)
         {
             speeking_manager.start_speaking(sentences);
         }
+
+        home_geniration.genirate_level();
     }
 
     [ContextMenu("create a level!")]
@@ -49,6 +50,7 @@ public class manadger_script : MonoBehaviour
         //PlayerPrefs.SetInt("amount_of_floors", amount_of_floors);
         PlayerPrefs.SetInt("amount_spawned_plates", amount_spawned_plates + 5);
         PlayerPrefs.SetInt("amound_dudes_to_spawn", amound_dudes_to_spawn + 3);
+
         PlayerPrefs.SetInt("nomber_of_iteration", nomber_of_iteration);
 
         DOTween.KillAll();

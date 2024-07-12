@@ -499,21 +499,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -95.831
       objectReference: {fileID: 0}
+    - target: {fileID: -6732357608386590627, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.00000022409364
+      objectReference: {fileID: 0}
+    - target: {fileID: -6732357608386590627, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.03000001
+      objectReference: {fileID: 0}
+    - target: {fileID: -6732357608386590627, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000000015521437
+      objectReference: {fileID: 0}
+    - target: {fileID: -6732357608386590627, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -71.503
+      objectReference: {fileID: 0}
+    - target: {fileID: -6732357608386590627, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -6732357608386590627, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: -3386318328632077622, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: -0.008
       objectReference: {fileID: 0}
     - target: {fileID: -3386318328632077622, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.56
+      value: -0.816
       objectReference: {fileID: 0}
     - target: {fileID: -3386318328632077622, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.75608027
+      value: 0.77758175
       objectReference: {fileID: 0}
     - target: {fileID: -3386318328632077622, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.65447897
+      value: -0.62878186
       objectReference: {fileID: 0}
     - target: {fileID: -3386318328632077622, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
       propertyPath: m_LocalRotation.y
@@ -521,11 +545,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3386318328632077622, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -81.76
+      value: -77.921
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
       propertyPath: m_Name
       value: chickentecktive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814453949411985479, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814453949411985479, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814453949411985479, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814453949411985479, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -108.292
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814453949411985479, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814453949411985479, guid: c946a5d9207c86749ad5778b9cdd8f04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -958,13 +1006,13 @@ MonoBehaviour:
   bounsing_hight: 0.09
   bounsing_sides: 0.05
   bounsing_dur: 0.7
+  is_speaking_anim: 0
   do_idle: 0
   beak_up: {fileID: 5009916606944007089}
   beak_down: {fileID: 7619687948098626690}
   wing_right: {fileID: 3521072907324176364}
   wing_left: {fileID: 8599750753728755848}
-  beak_up_original_original_rot: {x: -90, y: 0, z: 0}
-  beak_down_original_original_rot: {x: -90, y: 0, z: 0}
+  speaking_anim_dur: 0
 --- !u!4 &8830912690633514548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2149361076434853949, guid: 69c2bc5cf84464040b0cd7833e8d26c5, type: 3}

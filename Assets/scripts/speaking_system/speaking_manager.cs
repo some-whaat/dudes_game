@@ -9,6 +9,8 @@ public class speeking_manager : MonoBehaviour
 {
     [SerializeField] TMP_Text speech_text;
     [SerializeField] GameObject bubble;
+    //[SerializeField] GameObject chickentecktive;
+    [SerializeField] chickentecktive_animation_script ch_anim_script;
 
     [SerializeField] float typing_speed;
     [SerializeField] float bubble_scale = 120f;
@@ -22,21 +24,9 @@ public class speeking_manager : MonoBehaviour
 
     private void Update()
     {
-        if (is_speaking)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (is_typing)
-                {
-                    StopCoroutine("typing_animation");
-                    speech_text.text = curr_sent;
-                    is_typing = false;
-                }
-                else
-                {
-                    display_next_sent();
-                }
-            }
+            skip_sent_imput();
         }
     }
 
@@ -74,12 +64,21 @@ public class speeking_manager : MonoBehaviour
     IEnumerator typing_animation()
     {
         //добавить анимацию кура
+        //float ch_anim_timer = 0f;
+
         is_typing = true;
 
         foreach (char letter in curr_sent)
         {
+            if (!ch_anim_script.is_speaking_anim)
+            {
+                ch_anim_script.speaking_animation();
+            }
+
             speech_text.text += letter;
+            //ch_anim_timer += typing_speed;
             yield return new WaitForSeconds(typing_speed);
+
         }
         is_typing = false;
     }
@@ -90,6 +89,23 @@ public class speeking_manager : MonoBehaviour
         curr_sent = "";
         speech_text.text = "";
         bubble.transform.DOScale(0, bubble_emerging_dur).SetEase(Ease.InCubic);
+    }
+
+    public void skip_sent_imput()
+    {
+        if (is_speaking)
+        {
+            if (is_typing)
+            {
+                StopCoroutine("typing_animation");
+                speech_text.text = curr_sent;
+                is_typing = false;
+            }
+            else
+            {
+                display_next_sent();
+            }
+        }
     }
 
 }
