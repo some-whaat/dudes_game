@@ -19,6 +19,7 @@ public class speeking_manager : MonoBehaviour
     private Queue<string> speach_queue;
     private string curr_sent;
     
+    public bool hide_bubble = true;
     bool is_speaking = false;
     bool is_typing = false;
 
@@ -88,7 +89,12 @@ public class speeking_manager : MonoBehaviour
         is_speaking = false;
         curr_sent = "";
         speech_text.text = "";
-        bubble.transform.DOScale(0, bubble_emerging_dur).SetEase(Ease.InCubic);
+
+        if (hide_bubble)
+        {
+            bubble.transform.DOScale(0, bubble_emerging_dur).SetEase(Ease.InCubic);
+        }
+        
     }
 
     public void skip_sent_imput()

@@ -5,15 +5,14 @@ using UnityEngine;
 public class chickentecktive_legs : MonoBehaviour
 {
     [SerializeField] Transform stable_body;
-    /*
-    Vector3 local_pos;
 
-    void Start()
-    {
-    }
-    */
+    public bool do_fix_pos;
+
     void Update()
     {
-        transform.position = stable_body.position;// + transform.parent.transform.position;
+        if (do_fix_pos)
+        {
+            transform.position = stable_body.position;
+        }
     }
 }

@@ -9,7 +9,7 @@ public class choose_dude : MonoBehaviour
     [SerializeField] manadger_script manadger_script;
     [SerializeField] timer_script timer_script;
     [SerializeField] dude_visualaiser dude_visualaiser;
-    [SerializeField] camera_whatch camera_whatch;
+    private camera_whatch camera_whatch;
 
     private Camera cam;
 
@@ -20,25 +20,26 @@ public class choose_dude : MonoBehaviour
     [SerializeField] LayerMask mask;
 
     private int score = 0;
-    
-    private bool isntcalled = true;
 
+    bool isntcalled = true;
 
     void Start()
     {
         created_dudes = new HashSet<int[]>();
 
         cam = Camera.main;
+        camera_whatch = cam.GetComponent<camera_whatch>();
+        
+        timer_script.enabled = true;
     }
 
     private void Update()
     {
-       if (created_dudes.Count >= 2 && isntcalled) 
-       {
+        if (created_dudes.Count >= 2 && isntcalled)
+        {
             Dude_to_Find();
             isntcalled = false;
-       }
-
+        }
 
         if (Input.GetMouseButtonDown(0))
         {

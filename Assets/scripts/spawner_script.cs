@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class spawner_script : MonoBehaviour
 {
+
     //[SerializeField] manadger_script manadger_script;
 
     public GameObject[] head;
@@ -24,8 +25,13 @@ public class spawner_script : MonoBehaviour
 
     int amound_dudes_to_spawn;
 
+    choose_dude choose_dude;
+
+    /*
     void Start()
     {
+        choose_dude = transform.gameObject.GetComponent<choose_dude>();
+
         amound_dudes_to_spawn = PlayerPrefs.GetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
 
         all_dudes = new HashSet<int[]>();
@@ -46,7 +52,6 @@ public class spawner_script : MonoBehaviour
         }
     }
 
-    /*
     void Update()
     {
         timer += Time.deltaTime;
@@ -66,7 +71,26 @@ public class spawner_script : MonoBehaviour
 
     public void spawn_dudes(HashSet<Vector3> poses)
     {
+        choose_dude = transform.gameObject.GetComponent<choose_dude>();
+
         amound_dudes_to_spawn = PlayerPrefs.GetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
+
+        all_dudes = new HashSet<int[]>();
+
+        for (int heads = 0; heads < head.Length; heads++)
+        {
+            for (int eyess = 0; eyess < eyes.Length; eyess++)
+            {
+                for (int noses = 0; noses < nose.Length; noses++)
+                {
+                    for (int mouths = 0; mouths < mouth.Length; mouths++)
+                    {
+                        int[] narr = new int[4] { heads, eyess, noses, mouths };
+                        all_dudes.Add(narr);
+                    }
+                }
+            }
+        }
 
         for (int i = 0; i < amound_dudes_to_spawn; i++)
         {
@@ -75,5 +99,7 @@ public class spawner_script : MonoBehaviour
             dude.transform.position = pos;
             poses.Remove(pos);
         }
+
+        choose_dude.enabled = true;
     }
 }
