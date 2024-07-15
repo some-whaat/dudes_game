@@ -71,14 +71,16 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
+        /*
         chick_anim_script.rotate(-10f, tutorial_intro_rot_dur,1);
 
         while (chick_anim_script.is_rot)
         {
             yield return null;
         }
+        */
 
-        chick_anim_script.do_idle = true;
+        chick_anim_script.idle_ani();
 
         speeking_manager.start_speaking(tutorial_intro_sents);
 
@@ -87,9 +89,9 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
-        chick_anim_script.do_idle = false;
+        chick_anim_script.stop_idle_ani();
 
-        chick_anim_script.rotate(77f, 0.5f, 3);
+        chick_anim_script.rotate(90f, 0.5f, 3);
 
         while (chick_anim_script.is_rot)
         {
@@ -103,23 +105,33 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
-        chick_anim_script.rotate(-165f, 0.5f, 3);
+        chick_anim_script.rotate(-150f, 0.5f, 3);
 
         while (chick_anim_script.is_rot)
         {
             yield return null;
         }
 
-        chick_anim_script.do_idle = true;
+        chick_anim_script.idle_ani();
         speeking_manager.start_speaking(tutorial_intro_sents2);
 
+        while (speeking_manager.is_speaking)
+        {
+            yield return null;
+        }
 
-        tutorial_mechanics();
+        PlayerPrefs.SetInt("amount_of_floors", 1);
+        PlayerPrefs.SetInt("amount_spawned_plates", 22);
+        PlayerPrefs.SetInt("amound_dudes_to_spawn", 4);
+
+        PlayerPrefs.SetInt("nomber_of_iteration", 0);
+
+        home_geniration.genirate_level();
     }
 
     void tutorial_mechanics()
     {
-        home_geniration.genirate_level();
+        
     }
 
 }

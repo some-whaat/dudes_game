@@ -22,7 +22,7 @@ public class chickentecktive_animation_script : MonoBehaviour
 
 
     public bool is_speaking_anim = false;
-    public bool do_idle = false;
+    //public bool do_idle = false;
     //bool is_whatch_right = true;
     public bool is_jumping = false;
     public bool is_rot = false;
@@ -42,7 +42,10 @@ public class chickentecktive_animation_script : MonoBehaviour
     Sequence jumping_seq;
 
     Vector3 parts_original_original_rot;
+    Vector3 original_pos_y;
 
+    chickentecktive_legs chickentecktive_legs_right;
+    chickentecktive_legs chickentecktive_legs_left;
 
     void Start()
     {
@@ -50,18 +53,22 @@ public class chickentecktive_animation_script : MonoBehaviour
         //rot_right = transform.eulerAngles;
         conteiner = transform.parent;
 
-        transform.position -= new Vector3(0f, 0.3f, 0f);
-        //idle_animation = transform.DOLocalMove(transform.localPosition + new Vector3(Random.Range(-bounsing_sides, bounsing_sides), -bounsing_hight, Random.Range(-bounsing_sides, bounsing_sides)), bounsing_dur).SetEase(Ease.InOutSine).SetLoops(-1, loopType: LoopType.Yoyo); 
-    }
+        original_pos_y = Vector3.zero;
+        original_pos_y.y = transform.localPosition.y;
 
+        chickentecktive_legs_right = target_right.GetComponent<chickentecktive_legs>();
+        chickentecktive_legs_left = target_left.GetComponent<chickentecktive_legs>();
+    }
+/*
     private void Update()
     {
-        //transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        //transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
 
+        
         if (!do_idle && idle_animation != null)
         {
-            target_right.GetComponent<chickentecktive_legs>().do_fix_pos = false;
-            target_left.GetComponent<chickentecktive_legs>().do_fix_pos = false;
+            chickentecktive_legs_right.do_fix_pos = false;
+            chickentecktive_legs_left.do_fix_pos = false;
             idle_animation.Kill();
         }
         else if (do_idle && idle_animation == null)
@@ -76,10 +83,41 @@ public class chickentecktive_animation_script : MonoBehaviour
 
             Transform first_trans = transform;
             idle_animation.Append(transform.DOLocalMoveY(transform.localPosition.y - bounsing_hight, bounsing_dur).SetEase(Ease.InOutSine));
-            idle_animation.Join(transform.DOLocalRotate(first_trans.eulerAngles + new Vector3(0, bounsing_rot, 0), bounsing_dur).SetEase(Ease.InOutSine));
+            idle_animation.Join(transform.DOLocalRotate(first_trans.localEulerAngles + new Vector3(0, bounsing_rot, 0), bounsing_dur).SetEase(Ease.InOutSine));
             idle_animation.Append(transform.DOLocalMoveY(first_trans.localPosition.y, bounsing_dur).SetEase(Ease.InOutSine));
-            idle_animation.Join(transform.DOLocalRotate(first_trans.eulerAngles - new Vector3(0, bounsing_rot, 0), bounsing_dur).SetEase(Ease.InOutSine));
+            idle_animation.Join(transform.DOLocalRotate(first_trans.localEulerAngles - new Vector3(0, bounsing_rot, 0), bounsing_dur).SetEase(Ease.InOutSine));
         }
+        
+    }
+*/
+    public void stop_idle_ani()
+    {
+        
+
+        idle_animation.Kill();
+
+        transform.localPosition = original_pos_y;
+        //transform.DOLocalMoveY(original_pos_y, 0.09f);
+
+        chickentecktive_legs_right.do_fix_pos = false;
+        chickentecktive_legs_left.do_fix_pos = false;
+    }
+
+    public void idle_ani()
+    {
+        chickentecktive_legs_right.fix_pos();
+        chickentecktive_legs_left.fix_pos();
+
+        transform.localPosition -= new Vector3(0f, 0.05f, 0f);
+
+        idle_animation = DOTween.Sequence();
+        idle_animation.SetLoops(-1, loopType: LoopType.Yoyo);
+
+        Transform first_trans = transform;
+        idle_animation.Append(transform.DOLocalMoveY(transform.localPosition.y - bounsing_hight, bounsing_dur).SetEase(Ease.InOutSine));
+        idle_animation.Join(transform.DOLocalRotate(first_trans.localEulerAngles + new Vector3(0, bounsing_rot, 0), bounsing_dur).SetEase(Ease.InOutSine));
+        idle_animation.Append(transform.DOLocalMoveY(first_trans.localPosition.y, bounsing_dur).SetEase(Ease.InOutSine));
+        idle_animation.Join(transform.DOLocalRotate(first_trans.localEulerAngles - new Vector3(0, bounsing_rot, 0), bounsing_dur).SetEase(Ease.InOutSine));
     }
 
     public void speaking_animation()
@@ -158,7 +196,7 @@ public class chickentecktive_animation_script : MonoBehaviour
 
         //rotate_seq.SetLoops(loops_am, LoopType.Incremental);
 
-        rotate_seq.Append(transform.DOLocalRotate(end_rot + transform.eulerAngles, rot_dur)); //.SetEase(Ease.InOutSine));
+        rotate_seq.Append(transform.DOLocalRotate(end_rot + transform.localEulerAngles, rot_dur)); //.SetEase(Ease.InOutSine));
         rotate_seq.Join(target_left.transform.DOLocalJump(target_left.transform.localPosition, jump_hight, rot_step_amound, rot_dur).SetEase(curve));//.SetEase(Ease.InOutQuart));
         rotate_seq.Join(target_right.transform.DOLocalJump(target_right.transform.localPosition, jump_hight, rot_step_amound, rot_dur).SetEase(curve).SetDelay((rot_dur/ rot_step_amound)/2));//.SetEase(Ease.InOutQuart)) ;
 
