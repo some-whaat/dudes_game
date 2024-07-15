@@ -15,4 +15,10 @@ public class chickentecktive_legs : MonoBehaviour
             transform.position = stable_body.position;
         }
     }
+
+    public void fix_pos()
+    {
+        stable_body.position = transform.position;
+        do_fix_pos = true;
+    }
 }

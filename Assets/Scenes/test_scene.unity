@@ -164,7 +164,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 809959971629992480, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1419886219284206212, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -251,6 +251,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1623729893}
     - target: {fileID: 3390524838550008536, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: bounsing_dur
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390524838550008536, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: bounsing_rot
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390524838550008536, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: target_right
       value: 
       objectReference: {fileID: 492971821}
@@ -259,8 +267,12 @@ PrefabInstance:
       value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 3390524838550008536, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: rot_step_amound
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390524838550008536, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: is_speaking_anim
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3390524838550008536, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: speaking_anim_dur
@@ -506,17 +518,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.011
       objectReference: {fileID: 0}
+    - target: {fileID: 4589927014372642324, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4649892066073027771, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4649892066073027771, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: m_fontSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649892066073027771, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_margin.w
-      value: -2.955201
+      value: -2.3728082
       objectReference: {fileID: 0}
     - target: {fileID: 4649892066073027771, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_margin.x
-      value: 73.56298
+      value: 72.97966
       objectReference: {fileID: 0}
     - target: {fileID: 4649892066073027771, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_margin.y
@@ -524,11 +544,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649892066073027771, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_margin.z
-      value: 77.494835
+      value: 77.69347
       objectReference: {fileID: 0}
     - target: {fileID: 4649892066073027771, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_fontSizeBase
-      value: 1.36
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4683763324960270793, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -541,6 +561,18 @@ PrefabInstance:
     - target: {fileID: 4683763324960270793, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.879
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786536181295728358, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786536181295728358, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786536181295728358, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4786536181295728358, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -842,6 +874,7 @@ GameObject:
   - component: {fileID: 1209164268}
   - component: {fileID: 1209164270}
   - component: {fileID: 1209164271}
+  - component: {fileID: 1209164272}
   m_Layer: 0
   m_Name: The Manager
   m_TagString: manager
@@ -865,7 +898,6 @@ MonoBehaviour:
   amount_of_floors: 1
   amount_spawned_plates: 22
   amound_dudes_to_spawn: 5
-  speeking_manager: {fileID: 1209164270}
   sentences:
   - hey! ur new here huh?
   - I'm the boss here if u havnt know
@@ -907,7 +939,7 @@ MonoBehaviour:
   typing_speed: 0.091
   bubble_scale: 32
   bubble_emerging_dur: 1
-  hide_bubble: 1
+  is_speaking: 0
 --- !u!114 &1209164271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,7 +953,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chick: {fileID: 1324857973}
-  off_screen_start_pos: {x: 0, y: 0, z: 0}
+  off_screen_start_pos_x: -2.1
+  tutorial_intro_jump_amount: 3
+  tutorial_intro_dur: 1.7
+  tutorial_intro_dest: 0
+  tutorial_intro_rot_angle: 30
+  tutorial_intro_rot_dur: 0.5
+  tutorial_intro_sents:
+  - hey! ur new here huh?
+  - I'm the boss here if u havnt know
+  - yeah, I'm kinda pro...
+  - the coolest if u want
+  - so yeah, I'm better than u
+  - so I obviusly wont do anythin
+  tutorial_intro_sents2:
+  - so let's see what your work will be..
+--- !u!114 &1209164272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209164267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e927dcb82a6cb468eb136b81bfbb49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner_script: {fileID: 975370398}
+  camera_center: {fileID: 452175605}
+  colors:
+  - {r: 1, g: 0.90196085, b: 0.882353, a: 1}
+  - {r: 0.8745098, g: 0.6069098, b: 0.72924125, a: 1}
+  - {r: 0.5372549, g: 0.5411765, b: 0.60784316, a: 1}
+  plate_meshes:
+  - {fileID: 5459810829043401177, guid: de55da07b08f3954cb1d5dd2d75c7e18, type: 3}
+  plate_ornaments:
+  - {fileID: 919132149155446097, guid: 0fdcd04f8465986418349bf63b811913, type: 3}
+  - {fileID: 919132149155446097, guid: f014c83ebdb10bc42b4f8426ad4d3f09, type: 3}
+  - {fileID: 919132149155446097, guid: c1aac7a018215f746b3e054fae7180bd, type: 3}
+  plate: {fileID: 1927125606229036755, guid: 9216d3443da2ebd45956423bd69572e7, type: 3}
+  wall_coll: {fileID: 1555623924044153249, guid: 6d790e2ceb7fd724db1b3180da655ded, type: 3}
+  stairs: {fileID: 4929476852316421578, guid: dc4ee396e35210a4c863399ad9280dd3, type: 3}
+  ornament_fiequoncy: 5
 --- !u!1 &1324857973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 809959971629992480, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
@@ -1135,6 +1209,10 @@ PrefabInstance:
     - target: {fileID: 5819345944994248675, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
       propertyPath: m_Name
       value: home genirator
+      objectReference: {fileID: 0}
+    - target: {fileID: 5819345944994248675, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8367950656085708556, guid: 8b123c08505ec1d4984d3a7b58d7b581, type: 3}
       propertyPath: m_LocalPosition.x

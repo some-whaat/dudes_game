@@ -17,7 +17,8 @@ public class manadger_script : MonoBehaviour
 
     //
 
-    [SerializeField] speeking_manager speeking_manager;
+    speeking_manager speeking_manager;
+    catscene_manager catscene_manager;
 
     //[TextArea(3, 16)]
     public string[] sentences;
@@ -26,6 +27,9 @@ public class manadger_script : MonoBehaviour
 
     private void Start()
     {
+        catscene_manager = transform.GetComponent<catscene_manager>();
+        speeking_manager = transform.GetComponent<speeking_manager>();
+
         amount_of_floors = PlayerPrefs.GetInt("amount_of_floors");
         amount_spawned_plates = PlayerPrefs.GetInt("amount_spawned_plates", amount_spawned_plates);
         amound_dudes_to_spawn = PlayerPrefs.GetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
@@ -34,7 +38,8 @@ public class manadger_script : MonoBehaviour
 
         if (do_tutorial)//(PlayerPrefs.GetInt("was_tutorial") != 1)
         {
-            speeking_manager.start_speaking(sentences);
+            catscene_manager.tutorial();
+            //speeking_manager.start_speaking(sentences);
         }
         else
         {

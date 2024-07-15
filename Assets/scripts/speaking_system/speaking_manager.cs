@@ -19,8 +19,8 @@ public class speeking_manager : MonoBehaviour
     private Queue<string> speach_queue;
     private string curr_sent;
     
-    public bool hide_bubble = true;
-    bool is_speaking = false;
+    //public bool tutorial = false;
+    public bool is_speaking = false;
     bool is_typing = false;
 
     private void Update()
@@ -64,9 +64,6 @@ public class speeking_manager : MonoBehaviour
 
     IEnumerator typing_animation()
     {
-        //добавить анимацию кура
-        //float ch_anim_timer = 0f;
-
         is_typing = true;
 
         foreach (char letter in curr_sent)
@@ -84,18 +81,6 @@ public class speeking_manager : MonoBehaviour
         is_typing = false;
     }
 
-    void end_speach()
-    {
-        is_speaking = false;
-        curr_sent = "";
-        speech_text.text = "";
-
-        if (hide_bubble)
-        {
-            bubble.transform.DOScale(0, bubble_emerging_dur).SetEase(Ease.InCubic);
-        }
-        
-    }
 
     public void skip_sent_imput()
     {
@@ -114,4 +99,19 @@ public class speeking_manager : MonoBehaviour
         }
     }
 
+
+    void end_speach()
+    {
+        is_speaking = false;
+        curr_sent = "";
+        speech_text.text = "";
+
+        bubble.transform.DOScale(0, bubble_emerging_dur).SetEase(Ease.InCubic);
+        /*
+        if (tutorial)
+        {
+            bubble.transform.DOScale(0, bubble_emerging_dur).SetEase(Ease.InCubic);
+        }
+        */
+    }
 }
