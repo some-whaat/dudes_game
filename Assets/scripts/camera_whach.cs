@@ -17,6 +17,7 @@ public class camera_whatch : MonoBehaviour
     public float zoom;
     [SerializeField] private float scroll_speed;
 
+
     private void Start()
     {
         cam = Camera.main;

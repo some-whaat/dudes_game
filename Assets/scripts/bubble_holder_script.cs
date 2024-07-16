@@ -20,7 +20,7 @@ public class bubble_holder_script : MonoBehaviour
 
     private void OnMouseDown()
     {
-        speeking_manager.skip_sent_imput();
+        speeking_manager.swich_skip_sent_imput();
     }
 
     private void OnTriggerEnter()

@@ -486,6 +486,14 @@ PrefabInstance:
       propertyPath: manadger_script
       value: 
       objectReference: {fileID: 1209164268}
+    - target: {fileID: 4236658836153379450, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: mouth.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236658836153379450, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: mouth.Array.data[4]
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: fe996f22978d7ce4f96188f195bb21b7, type: 3}
     - target: {fileID: 4357236508350726287, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -940,6 +948,8 @@ MonoBehaviour:
   bubble_scale: 32
   bubble_emerging_dur: 1
   is_speaking: 0
+  hide_bubble: 1
+  is_unskip: 0
 --- !u!114 &1209164271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,6 +978,26 @@ MonoBehaviour:
   - so I obviusly wont do anythin
   tutorial_intro_sents2:
   - so let's see what your work will be..
+  mech_intro_sents:
+  - so here you can see..
+  - a small home whith some TERREBLE criminals
+  - but first, you need to lern some fansy camera moves..
+  - for looking around first make sure you have mouse..
+  mech_sents_cam_rot:
+  - hold left button and drag anywhere, but DON'T PRESS ON DUDES
+  mech_sents_zoom:
+  - now try to scroll mouse vill to zoom in 'n out
+  mech_sents_cam_changepos:
+  - cool, now to change position around wich camera is rotating
+  mech_sents_cam_changepos2:
+  - ' press right mouse button on some house part '
+  mech_sents_dude_exp:
+  - good work! now about this dudes
+  - they are really terrafaing right?
+  - (and on top of everything they are like COMPLITLY NAKID)
+  - why are you looking at me like so???
+  - I have feasers, and I am REALLY civiolised
+  - but about this savage..
 --- !u!114 &1209164272
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -96,7 +96,7 @@ public class chickentecktive_animation_script : MonoBehaviour
 
         idle_animation.Kill();
 
-        transform.localPosition = original_pos_y;
+        //transform.localPosition = original_pos_y; WTF???
         //transform.DOLocalMoveY(original_pos_y, 0.09f);
 
         chickentecktive_legs_right.do_fix_pos = false;

@@ -21,18 +21,23 @@ public class speeking_manager : MonoBehaviour
     
     //public bool tutorial = false;
     public bool is_speaking = false;
+    public bool hide_bubble = true;
+    public bool is_unskip = false;
     bool is_typing = false;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            skip_sent_imput();
+            swich_skip_sent_imput();
         }
     }
 
     public void start_speaking(string[] in_sentences)
     {
+        curr_sent = "";
+        speech_text.text = "";
+
         bubble.transform.DOScale(bubble_scale, bubble_emerging_dur).SetEase(Ease.OutBounce);
 
         is_speaking = true;
@@ -99,6 +104,20 @@ public class speeking_manager : MonoBehaviour
         }
     }
 
+    public void swich_skip_sent_imput()
+    {
+        if (!is_unskip)
+        {
+            skip_sent_imput();
+        }
+        else if (is_typing)
+        {
+            StopCoroutine("typing_animation");
+            speech_text.text = curr_sent;
+            is_typing = false;
+        }
+    }
+
 
     void end_speach()
     {
@@ -106,12 +125,10 @@ public class speeking_manager : MonoBehaviour
         curr_sent = "";
         speech_text.text = "";
 
-        bubble.transform.DOScale(0, bubble_emerging_dur).SetEase(Ease.InCubic);
-        /*
-        if (tutorial)
+        
+        if (hide_bubble)
         {
             bubble.transform.DOScale(0, bubble_emerging_dur).SetEase(Ease.InCubic);
         }
-        */
     }
 }

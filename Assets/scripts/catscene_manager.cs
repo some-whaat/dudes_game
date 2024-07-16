@@ -13,6 +13,7 @@ public class catscene_manager : MonoBehaviour
     chickentecktive_animation_script chick_anim_script;
     speeking_manager speeking_manager;
     home_geniration home_geniration;
+    Camera cam;
 
     //[SerializeField] string[] funcs;
 
@@ -24,6 +25,14 @@ public class catscene_manager : MonoBehaviour
 
     [SerializeField] string[] tutorial_intro_sents;
     [SerializeField] string[] tutorial_intro_sents2;
+    [SerializeField] string[] mech_intro_sents;
+    //[SerializeField] string[] mech_sents;
+    [SerializeField] string[] mech_sents_cam_rot;
+    [SerializeField] string[] mech_sents_zoom;
+    [SerializeField] string[] mech_sents_cam_changepos;
+    [SerializeField] string[] mech_sents_cam_changepos2;
+    [SerializeField] string[] mech_sents_dude_exp;
+
 
     /*
     private void Start()
@@ -38,6 +47,7 @@ public class catscene_manager : MonoBehaviour
         home_geniration = GetComponent<home_geniration>();
         speeking_manager = GetComponent<speeking_manager>();
         chick_cont = chick.transform.parent.gameObject;
+        cam = Camera.main;
 
         chick_cont.transform.localPosition = new Vector3(off_screen_start_pos_x, chick_cont.transform.localPosition.y, chick_cont.transform.localPosition.z);
         chick.SetActive(true);
@@ -127,11 +137,59 @@ public class catscene_manager : MonoBehaviour
         PlayerPrefs.SetInt("nomber_of_iteration", 0);
 
         home_geniration.genirate_level();
+        StartCoroutine(tutorial_mechanics());
     }
 
-    void tutorial_mechanics()
+    IEnumerator tutorial_mechanics()
     {
-        
+        speeking_manager.hide_bubble = false;
+        speeking_manager.start_speaking(mech_intro_sents);
+
+        while (speeking_manager.is_speaking)
+        {
+            yield return null;
+        }
+
+        speeking_manager.is_unskip = true;
+
+        Vector3 cam_root = cam.transform.eulerAngles;
+
+        speeking_manager.start_speaking(mech_sents_cam_rot);
+
+        while (Vector3.Distance(cam_root, cam.transform.eulerAngles) < 55f)
+        {
+            yield return null;
+        }
+
+        float cam_zooom = cam.orthographicSize;
+        speeking_manager.start_speaking(mech_sents_zoom);
+
+        while (Mathf.Abs(cam_zooom - cam.orthographicSize) < 6f)
+        {
+            yield return null;
+        }
+
+        speeking_manager.is_unskip = false;
+        speeking_manager.start_speaking(mech_sents_cam_changepos);
+
+        while (speeking_manager.is_speaking)
+        {
+            yield return null;
+        }
+
+        speeking_manager.is_unskip = true;
+
+        camera_whatch cam_script = cam.GetComponent<camera_whatch>();
+        Transform cam_taarget = cam_script.target;
+        speeking_manager.start_speaking(mech_sents_cam_changepos2);
+
+        while (cam_taarget == cam_script.target)
+        {
+            yield return null;
+        }
+
+        speeking_manager.is_unskip = false;
+        speeking_manager.start_speaking(mech_sents_dude_exp);
     }
 
 }
