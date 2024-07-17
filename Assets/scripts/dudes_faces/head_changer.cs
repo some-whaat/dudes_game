@@ -19,7 +19,7 @@ public class head_changer : MonoBehaviour
         spawner = GameObject.FindGameObjectWithTag("spawner");
         spawner_script = spawner.GetComponent<spawner_script>();
         try { choose_dude = spawner.GetComponent<choose_dude>(); }
-        catch { }
+        catch { Debug.Log("no choosedude"); }
 
         parts = new GameObject[4][] { spawner_script.head, spawner_script.eyes, spawner_script.nose, spawner_script.mouth };
         generateFace();

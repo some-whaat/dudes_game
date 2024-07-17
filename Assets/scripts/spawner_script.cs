@@ -85,12 +85,14 @@ public class spawner_script : MonoBehaviour
                 {
                     for (int mouths = 0; mouths < mouth.Length; mouths++)
                     {
-                        int[] narr = new int[4] { heads, eyess, noses, mouths };
-                        all_dudes.Add(narr);
+                        int[] prop = new int[4] { heads, eyess, noses, mouths };
+                        all_dudes.Add(prop);
                     }
                 }
             }
         }
+
+        choose_dude.enabled = true;
 
         for (int i = 0; i < amound_dudes_to_spawn; i++)
         {
@@ -100,6 +102,6 @@ public class spawner_script : MonoBehaviour
             poses.Remove(pos);
         }
 
-        choose_dude.enabled = true;
+        
     }
 }

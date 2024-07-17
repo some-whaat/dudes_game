@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class manadger_script : MonoBehaviour
 {
     //[SerializeField] spawner_script spawner_script;
-    [SerializeField] home_geniration home_geniration;
+    [SerializeField] public home_geniration home_geniration;
 
     public int amount_of_floors = 5;
     public int amount_spawned_plates = 44;
@@ -23,20 +23,22 @@ public class manadger_script : MonoBehaviour
     //[TextArea(3, 16)]
     public string[] sentences;
 
-    [SerializeField] bool do_tutorial = false;
+    public bool do_tutorial = false;
 
     private void Start()
     {
-        catscene_manager = transform.GetComponent<catscene_manager>();
-        speeking_manager = transform.GetComponent<speeking_manager>();
+        catscene_manager = GetComponent<catscene_manager>();
+        speeking_manager = GetComponent<speeking_manager>();
+        //home_geniration = GetComponent<home_geniration>();
 
         amount_of_floors = PlayerPrefs.GetInt("amount_of_floors");
         amount_spawned_plates = PlayerPrefs.GetInt("amount_spawned_plates", amount_spawned_plates);
         amound_dudes_to_spawn = PlayerPrefs.GetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
         nomber_of_iteration = PlayerPrefs.GetInt("nomber_of_iteration", nomber_of_iteration);
         nomber_of_iteration ++;
+        PlayerPrefs.SetInt("was_tutorial", 0);
 
-        if (do_tutorial)//(PlayerPrefs.GetInt("was_tutorial") != 1)
+        if (do_tutorial) //(PlayerPrefs.GetInt("was_tutorial") != 1)
         {
             catscene_manager.tutorial();
             //speeking_manager.start_speaking(sentences);
@@ -64,6 +66,6 @@ public class manadger_script : MonoBehaviour
         PlayerPrefs.SetInt("nomber_of_iteration", nomber_of_iteration);
 
         DOTween.KillAll();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("test_scene");
     }
 }

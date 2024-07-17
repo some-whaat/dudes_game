@@ -6,20 +6,25 @@ using UnityEngine.UI;
 public class timer_script : MonoBehaviour
 {
     public float timer_time = 60.0f;
+    public bool start_timer = true;
 
     [SerializeField] manadger_script manadger_script;
     [SerializeField] Text timer_text;
 
     void Update()
     {
-        timer_time -= Time.deltaTime;
-
-        if (timer_time <= 0.0f)
+        if (start_timer)
         {
-            DOTween.KillAll();
-            SceneManager.LoadScene(0);
-        }
+            timer_time -= Time.deltaTime;
 
-        timer_text.text = Mathf.Round(timer_time).ToString();
+            if (timer_time <= 0.0f)
+            {
+                DOTween.KillAll();
+                SceneManager.LoadScene(0);
+            }
+
+            timer_text.text = Mathf.Round(timer_time).ToString();
+        }
+        
     }
 }

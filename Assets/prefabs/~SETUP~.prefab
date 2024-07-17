@@ -1462,6 +1462,7 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: e86e7656a08927f45a04f312d2e577d4, type: 3}
   - {fileID: 919132149155446097, guid: 94f8d06c246ef3949bdf86e1e2062595, type: 3}
   - {fileID: 919132149155446097, guid: 33f41537619a9e148be9785376618340, type: 3}
+  - {fileID: 919132149155446097, guid: fe996f22978d7ce4f96188f195bb21b7, type: 3}
   DUDE_prefab: {fileID: 5511979058328993815, guid: 3c4bd38deb88efd4ca162485ceb1f7de, type: 3}
 --- !u!114 &4357236508350726287
 MonoBehaviour:
@@ -1475,7 +1476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22edab4dde6ec0946b334e462fedab70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manadger_script: {fileID: 0}
   timer_script: {fileID: 0}
   dude_visualaiser: {fileID: 6651819153420465582}
   wanted_dude: 

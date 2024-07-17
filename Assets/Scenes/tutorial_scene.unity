@@ -621,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649892066073027771, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_fontSize
-      value: 2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4649892066073027771, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_margin.w
@@ -641,7 +641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649892066073027771, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_fontSizeBase
-      value: 2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4683763324960270793, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1082,7 +1082,7 @@ MonoBehaviour:
   - the coolest if u want
   - so yeah, I'm better than u
   - so I obviusly wont do anythin
-  do_tutorial: 0
+  do_tutorial: 1
 --- !u!4 &1209164269
 Transform:
   m_ObjectHideFlags: 0

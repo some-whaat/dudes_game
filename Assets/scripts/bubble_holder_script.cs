@@ -23,23 +23,14 @@ public class bubble_holder_script : MonoBehaviour
         speeking_manager.swich_skip_sent_imput();
     }
 
+    /*
     private void OnTriggerEnter()
     {
-        /*
-        if (curr_angle == 0)
-        {
-            curr_angle = 180;
-        }
-        else
-        {
-            curr_angle = 0;
-        }
-        turn(curr_angle);
-        */
         turn();
     }
-
-    public void turn() //180 or 0 only
+    
+     */
+    public void turn()
     {
         /*
         Debug.Log(angle);

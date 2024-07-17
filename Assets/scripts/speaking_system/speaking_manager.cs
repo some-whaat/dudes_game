@@ -35,6 +35,7 @@ public class speeking_manager : MonoBehaviour
 
     public void start_speaking(string[] in_sentences)
     {
+        StopCoroutine("typing_animation");
         curr_sent = "";
         speech_text.text = "";
 
@@ -118,6 +119,17 @@ public class speeking_manager : MonoBehaviour
         }
     }
 
+    public IEnumerator nope()
+    {
+        StopCoroutine("typing_animation");
+        speech_text.text = "nope";
+        is_typing = false;
+
+        yield return new WaitForSeconds(1.1f);
+
+        speech_text.text = curr_sent;
+
+    }
 
     void end_speach()
     {

@@ -25,6 +25,7 @@ public class wolking_manadger : MonoBehaviour
     [SerializeField] private float step_hight = 1;
     [SerializeField] float step_time;
     [SerializeField] float min_step_dist;
+    //[SerializeField] float max_step_dist = 1f;
     [SerializeField] float restep_time;
 
     public target_to_go left_target_to_go;
@@ -91,8 +92,9 @@ public class wolking_manadger : MonoBehaviour
         vec.y = target_to_go.point.y;
 
         Vector3 end_pos = ProjetOnPlain(math_method_influence * vec + (1 - math_method_influence) * target_to_go.point);
+        //Vector3 end_pos = ProjetOnPlain(Vector3.ClampMagnitude(vec, max_step_dist));
 
-        
+
         is_stepping = true;
         prosigual_walking.is_steping = true;
         prosigual_walking.transform.DOJump(end_pos, step_hight, 1, step_movement_time).SetEase(curve);

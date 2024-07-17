@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class choose_dude : MonoBehaviour
 {
-    [SerializeField] manadger_script manadger_script;
+    manadger_script manadger_script;
+    speeking_manager speeking_manager;
+    catscene_manager catscene_manager;
     [SerializeField] timer_script timer_script;
     [SerializeField] dude_visualaiser dude_visualaiser;
     private camera_whatch camera_whatch;
@@ -25,12 +27,22 @@ public class choose_dude : MonoBehaviour
 
     void Start()
     {
+        GameObject manadger = GameObject.FindWithTag("manager");
+        manadger_script = manadger.GetComponent<manadger_script>();
+        speeking_manager = manadger.GetComponent<speeking_manager>();
+        catscene_manager = manadger.GetComponent<catscene_manager>();
+
+
         created_dudes = new HashSet<int[]>();
 
         cam = Camera.main;
         camera_whatch = cam.GetComponent<camera_whatch>();
-        
-        timer_script.enabled = true;
+
+        if (PlayerPrefs.GetInt("was_tutorial") == 1)
+        {
+            timer_script.enabled = true;
+        }
+
     }
 
     private void Update()
@@ -86,19 +98,39 @@ public class choose_dude : MonoBehaviour
 
     public void IsTheDude(int[] prop, animation_script animation_script)
     {
-        if (prop == wanted_dude)
+        if (manadger_script.do_tutorial)
         {
-            score += 1;
+            if (prop == wanted_dude)
+            {
+                score += 1;
 
-            animation_script.catch_animation();
+                animation_script.catch_animation(false);
 
-            //manadger_script.new_level();
-
-            //Dude_to_Find();
+                catscene_manager.had_finded_dude = true;
+            }
+            else
+            {
+                StartCoroutine(speeking_manager.nope());
+            }
         }
+
         else
         {
-            timer_script.timer_time -= 10;
+            if (prop == wanted_dude)
+            {
+                score += 1;
+
+                animation_script.catch_animation();
+
+                //manadger_script.new_level();
+
+                //Dude_to_Find();
+            }
+            else
+            {
+                timer_script.timer_time -= 10;
+            }
         }
+
     }
 }

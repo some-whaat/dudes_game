@@ -1067,7 +1067,7 @@ MonoBehaviour:
   distance_of_vieuving: 4
   hight_of_raycast: 2
   angle_of_vieuving: 360
-  amount_of_rays: 10
+  amount_of_rays: 15
   dudes_mask:
     serializedVersion: 2
     m_Bits: 439

@@ -109,7 +109,7 @@ public class chickentecktive_animation_script : MonoBehaviour
         chickentecktive_legs_left.fix_pos();
 
         //transform.localPosition -= new Vector3(0f, 0.05f, 0f);
-        transform.DOLocalMoveY(transform.localPosition.y - 0.05f, 0.09f);
+        //transform.DOLocalMoveY(transform.localPosition.y - 0.05f, 0.11f);
 
         idle_animation = DOTween.Sequence();
         idle_animation.SetLoops(-1, loopType: LoopType.Yoyo);
@@ -197,9 +197,9 @@ public class chickentecktive_animation_script : MonoBehaviour
 
         //rotate_seq.SetLoops(loops_am, LoopType.Incremental);
 
-        rotate_seq.Append(transform.DOLocalRotate(end_rot + transform.localEulerAngles, rot_dur)); //.SetEase(Ease.InOutSine));
-        rotate_seq.Join(target_left.transform.DOLocalJump(target_left.transform.localPosition, jump_hight, rot_step_amound, rot_dur).SetEase(curve));//.SetEase(Ease.InOutQuart));
-        rotate_seq.Join(target_right.transform.DOLocalJump(target_right.transform.localPosition, jump_hight, rot_step_amound, rot_dur).SetEase(curve).SetDelay((rot_dur/ rot_step_amound)/2));//.SetEase(Ease.InOutQuart)) ;
+        rotate_seq.Append(transform.DOLocalRotate(end_rot + transform.localEulerAngles, rot_dur).SetEase(Ease.InOutQuad));
+        rotate_seq.Join(target_left.transform.DOLocalJump(target_left.transform.localPosition, jump_hight, rot_step_amound, rot_dur).SetEase(Ease.InOutQuad));//.SetEase(Ease.InOutQuart));
+        rotate_seq.Join(target_right.transform.DOLocalJump(target_right.transform.localPosition, jump_hight, rot_step_amound, rot_dur).SetEase(Ease.InOutQuad).SetDelay((rot_dur/ rot_step_amound)/2));//.SetEase(Ease.InOutQuart)) ;
 
         rotate_seq.OnComplete(() => is_rot = false);
     }

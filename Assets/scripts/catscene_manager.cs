@@ -7,13 +7,19 @@ using UnityEngine;
 public class catscene_manager : MonoBehaviour
 {
     [SerializeField] GameObject chick;
+    [SerializeField] GameObject dude_vis;
+    [SerializeField] timer_script timer_script;
     GameObject chick_cont;
     [SerializeField] float off_screen_start_pos_x;
 
     chickentecktive_animation_script chick_anim_script;
     speeking_manager speeking_manager;
     home_geniration home_geniration;
+    choose_dude choose_dude;
+    manadger_script manadger_script;
     Camera cam;
+
+    public bool had_finded_dude = false;
 
     //[SerializeField] string[] funcs;
 
@@ -32,14 +38,23 @@ public class catscene_manager : MonoBehaviour
     [SerializeField] string[] mech_sents_cam_changepos;
     [SerializeField] string[] mech_sents_cam_changepos2;
     [SerializeField] string[] mech_sents_dude_exp;
+    [SerializeField] string[] mech_sents_dudes;
+    [SerializeField] string[] mech_sents_timer_intro;
+    [SerializeField] string[] mech_sents_timer;
+    [SerializeField] string[] mech_sents_ending;
+
 
 
     public void tutorial()
     {
         chick_anim_script = chick.GetComponent<chickentecktive_animation_script>();
-        home_geniration = GetComponent<home_geniration>();
+        //home_geniration = GetComponent<home_geniration>();
+        manadger_script = GetComponent<manadger_script>();
+        home_geniration = manadger_script.home_geniration;
         speeking_manager = GetComponent<speeking_manager>();
+        choose_dude = GameObject.FindGameObjectWithTag("spawner").GetComponent<choose_dude>();
         chick_cont = chick.transform.parent.gameObject;
+        dude_vis.SetActive(false);
         cam = Camera.main;
 
         chick_cont.transform.localPosition = new Vector3(off_screen_start_pos_x, chick_cont.transform.localPosition.y, chick_cont.transform.localPosition.z);
@@ -74,16 +89,16 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.03f);
 
-        chick_anim_script.rotate(66f, tutorial_intro_rot_dur, 2);
+        chick_anim_script.rotate(15f, tutorial_intro_rot_dur, 2);
 
         while (chick_anim_script.is_rot)
         {
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.7f);
+        //yield return new WaitForSeconds(0.1f);
 
         chick_anim_script.idle_ani();
 
@@ -110,7 +125,7 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
-        chick_anim_script.rotate(-150f, 0.5f, 3);
+        chick_anim_script.rotate(-166f, 0.5f, 3);
 
         while (chick_anim_script.is_rot)
         {
@@ -125,7 +140,7 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
-        PlayerPrefs.SetInt("amount_of_floors", 1);
+        PlayerPrefs.SetInt("amount_of_floors", 2);
         PlayerPrefs.SetInt("amount_spawned_plates", 22);
         PlayerPrefs.SetInt("amound_dudes_to_spawn", 4);
 
@@ -185,6 +200,54 @@ public class catscene_manager : MonoBehaviour
 
         speeking_manager.is_unskip = false;
         speeking_manager.start_speaking(mech_sents_dude_exp);
+
+        while (speeking_manager.is_speaking)
+        {
+            yield return null;
+        }
+
+        speeking_manager.is_unskip = true;
+        dude_vis.SetActive(true);
+        speeking_manager.start_speaking(mech_sents_dudes);
+
+        while (!had_finded_dude)
+        {
+            yield return null;
+        }
+
+        speeking_manager.is_unskip = false;
+        speeking_manager.start_speaking(mech_sents_timer_intro);
+
+        while (speeking_manager.is_speaking)
+        {
+            yield return null;
+        }
+
+        timer_script.start_timer = false;
+        timer_script.enabled = true;
+        speeking_manager.start_speaking(mech_sents_timer);
+
+        while (speeking_manager.is_speaking)
+        {
+            yield return null;
+        }
+
+        speeking_manager.hide_bubble = true;
+        speeking_manager.start_speaking(mech_sents_ending);
+
+        timer_script.start_timer = true;
+
+        chick_anim_script.jump(-3f, 6, 3f);
+
+        while (chick_anim_script.is_jumping)
+        {
+            yield return null;
+        }
+
+        //PlayerPrefs.SetInt("was_tutorial", 1);
+        chick_cont.SetActive(false);
+        manadger_script.do_tutorial = false;
+        choose_dude.Dude_to_Find();
     }
 
 }

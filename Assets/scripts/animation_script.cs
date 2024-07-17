@@ -30,7 +30,7 @@ public class animation_script : MonoBehaviour
     }
     */
 
-    public void catch_animation()
+    public void catch_animation(bool do_restart = true)
     {
         activated = true;
         rb = GetComponent<Rigidbody>();
@@ -64,7 +64,11 @@ public class animation_script : MonoBehaviour
         sequence.Append(transform.DOMoveY(transform.position.y - catch_animation_hight, catch_animation_douwning_duration).SetEase(Ease.OutCubic));
         sequence.Append(transform.DOShakePosition(catch_animation_duration, catch_animation_strength, fadeOut: false));//.SetEase(Ease.InCubic));
 
-        sequence.onComplete = manadger_script.new_level;
+        if (do_restart)
+        {
+            sequence.onComplete = manadger_script.new_level;
+        }
+        
         //transform.DOKill();
         //manadger_script.new_level();
     }
