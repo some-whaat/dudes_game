@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class manadger_script : MonoBehaviour
 {
     //[SerializeField] spawner_script spawner_script;
-    [SerializeField] public home_geniration home_geniration;
+    public home_geniration home_geniration;
 
     public int amount_of_floors = 5;
     public int amount_spawned_plates = 44;
@@ -29,7 +29,6 @@ public class manadger_script : MonoBehaviour
     {
         catscene_manager = GetComponent<catscene_manager>();
         speeking_manager = GetComponent<speeking_manager>();
-        //home_geniration = GetComponent<home_geniration>();
 
         amount_of_floors = PlayerPrefs.GetInt("amount_of_floors");
         amount_spawned_plates = PlayerPrefs.GetInt("amount_spawned_plates", amount_spawned_plates);

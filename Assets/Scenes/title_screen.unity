@@ -853,7 +853,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 039ca15a6f2c7d14487a8192348842c4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.513
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1571,7 +1571,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2092818843}
         m_TargetAssemblyTypeName: meinMenu_script, Assembly-CSharp
-        m_MethodName: start_the_game
+        m_MethodName: start_tutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1810,6 +1810,7 @@ MonoBehaviour:
   siart_amount_of_floors: 1
   siart_amount_spawned_plates: 11
   siart_amound_dudes_to_spawn: 3
+  home_geniration: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1817,5 +1818,5 @@ SceneRoots:
   - {fileID: 2072785934}
   - {fileID: 2038451007}
   - {fileID: 203844589}
-  - {fileID: 322956952}
   - {fileID: 1017979658}
+  - {fileID: 322956952}

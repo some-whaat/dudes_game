@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wolking_manadger: {fileID: 2584490234986223567}
   movement_boids_script: {fileID: 3748895148270837810}
-  catch_animation_duration: 5
+  catch_animation_duration: 2
   catch_animation_strength: 0.19
   catch_animation_douwning_duration: 0.1
   catch_animation_look_duration: 0.3

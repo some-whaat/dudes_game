@@ -71,7 +71,9 @@ public class spawner_script : MonoBehaviour
 
     public void spawn_dudes(HashSet<Vector3> poses)
     {
-        choose_dude = transform.gameObject.GetComponent<choose_dude>();
+        try { choose_dude = transform.gameObject.GetComponent<choose_dude>(); }
+        catch { choose_dude = null;}
+        
 
         amound_dudes_to_spawn = PlayerPrefs.GetInt("amound_dudes_to_spawn", amound_dudes_to_spawn);
 
@@ -92,7 +94,10 @@ public class spawner_script : MonoBehaviour
             }
         }
 
-        choose_dude.enabled = true;
+        if (choose_dude != null)
+        {
+            choose_dude.enabled = true;
+        }
 
         for (int i = 0; i < amound_dudes_to_spawn; i++)
         {

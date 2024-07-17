@@ -48,7 +48,6 @@ public class catscene_manager : MonoBehaviour
     public void tutorial()
     {
         chick_anim_script = chick.GetComponent<chickentecktive_animation_script>();
-        //home_geniration = GetComponent<home_geniration>();
         manadger_script = GetComponent<manadger_script>();
         home_geniration = manadger_script.home_geniration;
         speeking_manager = GetComponent<speeking_manager>();
@@ -237,6 +236,7 @@ public class catscene_manager : MonoBehaviour
 
         timer_script.start_timer = true;
 
+        chick_anim_script.stop_idle_ani();
         chick_anim_script.jump(-3f, 6, 3f);
 
         while (chick_anim_script.is_jumping)

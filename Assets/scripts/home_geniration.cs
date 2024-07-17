@@ -30,7 +30,7 @@ public class home_geniration : MonoBehaviour
 
     private Vector3[] _angles;
 
-    private void Start()
+    public void genirate_level()
     {
         _angles = new Vector3[4];
         _angles[0] = new Vector3(0, 0, 0);
@@ -38,10 +38,6 @@ public class home_geniration : MonoBehaviour
         _angles[2] = new Vector3(0, 180f, 0);
         _angles[3] = new Vector3(0, 270f, 0);
 
-    }
-
-    public void genirate_level()
-    {
         amount_of_floors = PlayerPrefs.GetInt("amount_of_floors");
         amount_spawned_plates = PlayerPrefs.GetInt("amount_spawned_plates", amount_spawned_plates);
 
@@ -91,7 +87,7 @@ public class home_geniration : MonoBehaviour
         }
 
 
-        HashSet<GameObject> spawned_plates = new HashSet<GameObject>();
+        //HashSet<GameObject> spawned_plates = new HashSet<GameObject>();
 
         foreach (Vector3 pos in spawned_plates_poses)
         {
@@ -111,7 +107,7 @@ public class home_geniration : MonoBehaviour
             plate_mash.transform.parent = _plate.transform;
 
             _plate.transform.position = pos;
-            spawned_plates.Add(_plate);
+            //spawned_plates.Add(_plate);
         }
 
         spawner_script.spawn_dudes(spawned_plates_poses);

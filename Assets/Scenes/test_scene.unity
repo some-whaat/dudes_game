@@ -1051,7 +1051,6 @@ GameObject:
   - component: {fileID: 1209164268}
   - component: {fileID: 1209164270}
   - component: {fileID: 1209164271}
-  - component: {fileID: 1209164272}
   m_Layer: 0
   m_Name: The Manager
   m_TagString: manager
@@ -1183,34 +1182,6 @@ MonoBehaviour:
   - '*stuff about timer*'
   mech_sents_ending:
   - good luck I gues
---- !u!114 &1209164272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209164267}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e927dcb82a6cb468eb136b81bfbb49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawner_script: {fileID: 975370398}
-  camera_center: {fileID: 452175605}
-  colors:
-  - {r: 1, g: 0.90196085, b: 0.882353, a: 1}
-  - {r: 0.8745098, g: 0.6069098, b: 0.72924125, a: 1}
-  - {r: 0.5372549, g: 0.5411765, b: 0.60784316, a: 1}
-  plate_meshes:
-  - {fileID: 5459810829043401177, guid: de55da07b08f3954cb1d5dd2d75c7e18, type: 3}
-  plate_ornaments:
-  - {fileID: 919132149155446097, guid: 0fdcd04f8465986418349bf63b811913, type: 3}
-  - {fileID: 919132149155446097, guid: f014c83ebdb10bc42b4f8426ad4d3f09, type: 3}
-  - {fileID: 919132149155446097, guid: c1aac7a018215f746b3e054fae7180bd, type: 3}
-  plate: {fileID: 1927125606229036755, guid: 9216d3443da2ebd45956423bd69572e7, type: 3}
-  wall_coll: {fileID: 1555623924044153249, guid: 6d790e2ceb7fd724db1b3180da655ded, type: 3}
-  stairs: {fileID: 4929476852316421578, guid: dc4ee396e35210a4c863399ad9280dd3, type: 3}
-  ornament_fiequoncy: 5
 --- !u!1 &1324857973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 809959971629992480, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}

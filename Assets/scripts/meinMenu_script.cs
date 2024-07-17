@@ -8,6 +8,13 @@ public class meinMenu_script : MonoBehaviour
     [SerializeField] int siart_amount_spawned_plates = 11;
     [SerializeField] int siart_amound_dudes_to_spawn = 3;
 
+    [SerializeField] home_geniration home_geniration;
+
+    private void Start()
+    {
+        home_geniration.genirate_level();
+    }
+
     public void start_tutorial()
     {
         PlayerPrefs.SetInt("amount_of_floors", 2);

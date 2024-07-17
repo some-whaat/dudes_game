@@ -43,6 +43,8 @@ public class choose_dude : MonoBehaviour
             timer_script.enabled = true;
         }
 
+        
+
     }
 
     private void Update()
@@ -92,6 +94,11 @@ public class choose_dude : MonoBehaviour
     [ContextMenu("Dude_to_Find")]
     public void Dude_to_Find()
     {
+        if (timer_script.enabled == false && !manadger_script.do_tutorial)
+        {
+            timer_script.enabled = true;
+        }
+
         wanted_dude = created_dudes.ElementAt(Random.Range(0, created_dudes.Count));
         dude_visualaiser.SetDude(wanted_dude);
     }
@@ -116,6 +123,7 @@ public class choose_dude : MonoBehaviour
 
         else
         {
+            
             if (prop == wanted_dude)
             {
                 score += 1;
