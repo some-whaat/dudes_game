@@ -34,13 +34,6 @@ public class catscene_manager : MonoBehaviour
     [SerializeField] string[] mech_sents_dude_exp;
 
 
-    /*
-    private void Start()
-    {
-        speeking_manager = GetComponent<speeking_manager>();
-    }
-    */
-
     public void tutorial()
     {
         chick_anim_script = chick.GetComponent<chickentecktive_animation_script>();
@@ -81,14 +74,16 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
-        /*
-        chick_anim_script.rotate(-10f, tutorial_intro_rot_dur,1);
+        yield return new WaitForSeconds(0.7f);
+
+        chick_anim_script.rotate(66f, tutorial_intro_rot_dur, 2);
 
         while (chick_anim_script.is_rot)
         {
             yield return null;
         }
-        */
+
+        yield return new WaitForSeconds(0.7f);
 
         chick_anim_script.idle_ani();
 

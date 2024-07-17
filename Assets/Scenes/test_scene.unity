@@ -945,7 +945,7 @@ MonoBehaviour:
   bubble: {fileID: 1331646844}
   ch_anim_script: {fileID: 490048597}
   typing_speed: 0.091
-  bubble_scale: 32
+  bubble_scale: 34
   bubble_emerging_dur: 1
   is_speaking: 0
   hide_bubble: 1
@@ -994,10 +994,15 @@ MonoBehaviour:
   mech_sents_dude_exp:
   - good work! now about this dudes
   - they are really terrafaing right?
+  - like what they are actually doing???
   - (and on top of everything they are like COMPLITLY NAKID)
   - why are you looking at me like so???
   - I have feasers, and I am REALLY civiolised
-  - but about this savage..
+  - but about this savages..
+  - our bosses had found some.. REALLY bad guys here
+  - like see this dude in the bottom right?
+  - he ate ALL the nut cookies, my favoriets!
+  - find him and catch!! (click whith right mouse button)
 --- !u!114 &1209164272
 MonoBehaviour:
   m_ObjectHideFlags: 0

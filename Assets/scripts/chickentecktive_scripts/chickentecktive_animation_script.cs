@@ -108,7 +108,8 @@ public class chickentecktive_animation_script : MonoBehaviour
         chickentecktive_legs_right.fix_pos();
         chickentecktive_legs_left.fix_pos();
 
-        transform.localPosition -= new Vector3(0f, 0.05f, 0f);
+        //transform.localPosition -= new Vector3(0f, 0.05f, 0f);
+        transform.DOLocalMoveY(transform.localPosition.y - 0.05f, 0.09f);
 
         idle_animation = DOTween.Sequence();
         idle_animation.SetLoops(-1, loopType: LoopType.Yoyo);
