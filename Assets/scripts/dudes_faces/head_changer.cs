@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -15,7 +13,6 @@ public class head_changer : MonoBehaviour
 
     void Start()
     {
-        
         spawner = GameObject.FindGameObjectWithTag("spawner");
         spawner_script = spawner.GetComponent<spawner_script>();
         try { choose_dude = spawner.GetComponent<choose_dude>(); }

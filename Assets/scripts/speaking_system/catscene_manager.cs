@@ -8,10 +8,9 @@ public class catscene_manager : MonoBehaviour
 {
     [SerializeField] GameObject chick;
     [SerializeField] GameObject dude_vis;
-    [SerializeField] timer_script timer_script;
     GameObject chick_cont;
-    [SerializeField] float off_screen_start_pos_x;
 
+    [SerializeField] timer_script timer_script;
     chickentecktive_animation_script chick_anim_script;
     speeking_manager speeking_manager;
     home_geniration home_geniration;
@@ -21,8 +20,7 @@ public class catscene_manager : MonoBehaviour
 
     public bool had_finded_dude = false;
 
-    //[SerializeField] string[] funcs;
-
+    [SerializeField] float off_screen_start_pos_x;
     [SerializeField] int tutorial_intro_jump_amount;
     [SerializeField] float tutorial_intro_dur;
     [SerializeField] float tutorial_intro_dest;
@@ -32,7 +30,6 @@ public class catscene_manager : MonoBehaviour
     [SerializeField] string[] tutorial_intro_sents;
     [SerializeField] string[] tutorial_intro_sents2;
     [SerializeField] string[] mech_intro_sents;
-    //[SerializeField] string[] mech_sents;
     [SerializeField] string[] mech_sents_cam_rot;
     [SerializeField] string[] mech_sents_zoom;
     [SerializeField] string[] mech_sents_cam_changepos;
@@ -42,7 +39,6 @@ public class catscene_manager : MonoBehaviour
     [SerializeField] string[] mech_sents_timer_intro;
     [SerializeField] string[] mech_sents_timer;
     [SerializeField] string[] mech_sents_ending;
-
 
 
     public void tutorial()

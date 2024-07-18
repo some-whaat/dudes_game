@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections;
 using TMPro;
@@ -9,7 +8,6 @@ public class speeking_manager : MonoBehaviour
 {
     [SerializeField] TMP_Text speech_text;
     [SerializeField] GameObject bubble;
-    //[SerializeField] GameObject chickentecktive;
     [SerializeField] chickentecktive_animation_script ch_anim_script;
 
     [SerializeField] float typing_speed;
@@ -19,7 +17,6 @@ public class speeking_manager : MonoBehaviour
     private Queue<string> speach_queue;
     private string curr_sent;
     
-    //public bool tutorial = false;
     public bool is_speaking = false;
     public bool hide_bubble = true;
     public bool is_unskip = false;
@@ -64,7 +61,6 @@ public class speeking_manager : MonoBehaviour
             curr_sent = speach_queue.Dequeue();
             StartCoroutine("typing_animation");
         }
-        
     }
 
 
@@ -80,10 +76,9 @@ public class speeking_manager : MonoBehaviour
             }
 
             speech_text.text += letter;
-            //ch_anim_timer += typing_speed;
             yield return new WaitForSeconds(typing_speed);
-
         }
+
         is_typing = false;
     }
 
@@ -128,7 +123,6 @@ public class speeking_manager : MonoBehaviour
         yield return new WaitForSeconds(1.1f);
 
         speech_text.text = curr_sent;
-
     }
 
     void end_speach()
@@ -136,7 +130,6 @@ public class speeking_manager : MonoBehaviour
         is_speaking = false;
         curr_sent = "";
         speech_text.text = "";
-
         
         if (hide_bubble)
         {

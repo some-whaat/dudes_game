@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class camera_whatch : MonoBehaviour
 {
@@ -10,7 +7,7 @@ public class camera_whatch : MonoBehaviour
     [SerializeField] dude_visualaiser_scale_script dude_visualaiser_scale_script;
 
     [SerializeField] float offset;
-    [SerializeField] float rotation_speed = 180  ;
+    [SerializeField] float rotation_speed = 180;
 
     private Vector3 previouse_pos;
 
@@ -33,12 +30,8 @@ public class camera_whatch : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 dir = previouse_pos - cam.ScreenToViewportPoint(Input.mousePosition);
-            /*
-            var newPos = (cam.transform.position - target.position).normalized * radius;
-            newPos += target.position;
-            cam.transform.position = newPos;
-            */
             Vector3 pos = cam.transform.position;
+
             cam.transform.position = target.position;
 
             cam.transform.Rotate(new Vector3(1, 0, 0), angle: dir.y * rotation_speed);
@@ -47,7 +40,9 @@ public class camera_whatch : MonoBehaviour
 
             previouse_pos = cam.ScreenToViewportPoint(Input.mousePosition);
         }
+
         zoom -= Input.mouseScrollDelta.y * scroll_speed;
+
         if (zoom < 2)
         {
             zoom = 2;
@@ -61,11 +56,6 @@ public class camera_whatch : MonoBehaviour
         previouse_pos = cam.ScreenToViewportPoint(Input.mousePosition);
 
         Vector3 dir = previouse_pos - cam.ScreenToViewportPoint(Input.mousePosition);
-        /*
-        var newPos = (cam.transform.position - target.position).normalized * radius;
-        newPos += target.position;
-        cam.transform.position = newPos;
-        */
         Vector3 pos = cam.transform.position;
         cam.transform.position = target.position;
 

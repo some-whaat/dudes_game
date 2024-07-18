@@ -25,6 +25,5 @@ public class timer_script : MonoBehaviour
 
             timer_text.text = Mathf.Round(timer_time).ToString();
         }
-        
     }
 }

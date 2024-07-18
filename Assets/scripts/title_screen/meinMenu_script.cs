@@ -10,11 +10,6 @@ public class meinMenu_script : MonoBehaviour
 
     [SerializeField] home_geniration home_geniration;
 
-    private void Start()
-    {
-        //home_geniration.genirate_level();
-    }
-
     public void start_tutorial()
     {
         PlayerPrefs.SetInt("amount_of_floors", siart_amount_of_floors);
@@ -36,6 +31,7 @@ public class meinMenu_script : MonoBehaviour
         DOTween.KillAll();
         SceneManager.LoadScene("test_scene");
     }
+
     public void quit_the_game()
     {
         Application.Quit();

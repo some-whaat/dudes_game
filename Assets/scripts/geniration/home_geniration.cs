@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class home_geniration : MonoBehaviour
 {
@@ -39,7 +38,6 @@ public class home_geniration : MonoBehaviour
 
         float floor_border = (amount_of_floors - 1) * dist_between_floors;
         floor_border /= 2;
-        //float middle_floor = floor_border - (floor_border * 2);
 
         HashSet<GameObject> all_wall_transforms = new HashSet<GameObject>();
         HashSet<Vector3> plates_poses_for_spawner = new HashSet<Vector3>();
@@ -61,7 +59,10 @@ public class home_geniration : MonoBehaviour
                 GameObject random_wall = wall_transforms.ElementAt(Random.Range(0, wall_transforms.Count));
 
                 floor_center_plate_pos = next_plate(random_wall.transform);// + (plate_side * -random_wall.transform.forward); почему-то так не работает :/
-                plates_poses_not_for_spawner.Add(new Vector3(random_wall.transform.position.x, floor_hight - dist_between_floors, random_wall.transform.position.z));
+                Vector3 under_steirs = new Vector3(random_wall.transform.position.x, floor_hight - dist_between_floors, random_wall.transform.position.z);
+                //spawn_plane(under_steirs);
+
+                plates_poses_not_for_spawner.Add(under_steirs);
 
                 Vector3 steir_pose = random_wall.transform.position;
                 steir_pose.y -= 3;
@@ -78,7 +79,6 @@ public class home_geniration : MonoBehaviour
                     camera_center.transform.position = steir_pose;
                 }
             }
-            //all_wall_transforms.UnionWith(wall_transforms);
         }
 
         plates_poses_for_spawner.ExceptWith(plates_poses_not_for_spawner);

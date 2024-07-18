@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class movement_boids_script : MonoBehaviour
@@ -20,7 +17,6 @@ public class movement_boids_script : MonoBehaviour
     [SerializeField] private float amount_of_rays;
     [SerializeField] private LayerMask dudes_mask;
 
-    //[SerializeField] wolking_manadger wolking_manadger;
     public float hight_y;
 
     private float fraction_angle;
@@ -37,7 +33,6 @@ public class movement_boids_script : MonoBehaviour
         srart_of_raycast = ( 180 - fraction_angle) / 2;
         end_of_raycast = srart_of_raycast + fraction_angle * amount_of_rays;
         hight_y = transform.position.y;
-
     }
 
     void FixedUpdate()
@@ -52,21 +47,16 @@ public class movement_boids_script : MonoBehaviour
             direction = -rb.transform.forward;
         }
 
-
         Vector3 next_pos = rb.transform.position + direction * speed * Time.deltaTime;
         if (!(Mathf.Abs(hight_y - transform.position.y) > 1)) 
         {
             next_pos.y = hight_y - hight_from_ground;
         }
-        
-
-        //next_pos.y = wolking_manadger.point.y;
 
         rb.transform.position = next_pos;
 
         Quaternion end_rot = Quaternion.LookRotation(-direction, Vector3.up);
         rb.transform.rotation = Quaternion.RotateTowards(transform.rotation, end_rot, rot_speed * Time.deltaTime);
-
     }
 
     private Vector3 Seporation()
@@ -108,23 +98,9 @@ public class movement_boids_script : MonoBehaviour
                 Vector3 hit_point = hit.point;
                 hit_point.y = transform.position.y;
                 raycast_interseptions.Add(hit_point);
-
-                /*
-                if (hit.transform.CompareTag("target"))
-                {
-                    Debug.Log("steirs!");
-                    raycast_interseptions.Add(-hit_point);
-                }
-
-                else
-                {
-                    raycast_interseptions.Add(hit_point);
-                }
-                */
             }
         }
 
         return raycast_interseptions;
-
     }
 }

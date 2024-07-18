@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -11,7 +8,6 @@ public class dude_visualaiser : MonoBehaviour
     private GameObject[] old_parts;
 
     private spawner_script spawner_script;
-
 
 
     void Start()
@@ -50,10 +46,9 @@ public class dude_visualaiser : MonoBehaviour
                 {
                     obj_rend.shadowCastingMode = ShadowCastingMode.Off;
                 }
-
             }
+
             old_parts[i] = obj;
         }
-
     }
 }
