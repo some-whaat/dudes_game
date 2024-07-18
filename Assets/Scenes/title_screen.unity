@@ -1807,10 +1807,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3211d1ac458514b49bd5adeb5dc6215b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  siart_amount_of_floors: 1
-  siart_amount_spawned_plates: 11
-  siart_amound_dudes_to_spawn: 3
-  home_geniration: {fileID: 0}
+  siart_amount_of_floors: 2
+  siart_amount_spawned_plates: 25
+  siart_amound_dudes_to_spawn: 8
+  home_geniration: {fileID: 322956955}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

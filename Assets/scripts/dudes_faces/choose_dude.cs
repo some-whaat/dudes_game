@@ -42,9 +42,6 @@ public class choose_dude : MonoBehaviour
         {
             timer_script.enabled = true;
         }
-
-        
-
     }
 
     private void Update()
@@ -123,22 +120,16 @@ public class choose_dude : MonoBehaviour
 
         else
         {
-            
             if (prop == wanted_dude)
             {
                 score += 1;
 
                 animation_script.catch_animation();
-
-                //manadger_script.new_level();
-
-                //Dude_to_Find();
             }
             else
             {
                 timer_script.timer_time -= 10;
             }
         }
-
     }
 }

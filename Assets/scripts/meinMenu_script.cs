@@ -12,14 +12,14 @@ public class meinMenu_script : MonoBehaviour
 
     private void Start()
     {
-        home_geniration.genirate_level();
+        //home_geniration.genirate_level();
     }
 
     public void start_tutorial()
     {
-        PlayerPrefs.SetInt("amount_of_floors", 2);
-        PlayerPrefs.SetInt("amount_spawned_plates", 25);
-        PlayerPrefs.SetInt("amound_dudes_to_spawn", 6);
+        PlayerPrefs.SetInt("amount_of_floors", siart_amount_of_floors);
+        PlayerPrefs.SetInt("amount_spawned_plates", siart_amount_spawned_plates);
+        PlayerPrefs.SetInt("amound_dudes_to_spawn", siart_amound_dudes_to_spawn);
         PlayerPrefs.SetInt("nomber_of_iteration", 0);
 
         DOTween.KillAll();

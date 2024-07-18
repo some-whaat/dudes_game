@@ -28,11 +28,9 @@ public class head_changer : MonoBehaviour
     [ContextMenu("generateFace")]
     private void generateFace()
     {
-        //Debug.Log(spawner_script.all_dudes.ElementAt(0));
         prop = spawner_script.all_dudes.ElementAt(Random.Range(0, spawner_script.all_dudes.Count));
-        //prop = new int[4] { Random.Range(0, head.Length), Random.Range(0, eyes.Length), Random.Range(0, nose.Length), Random.Range(0, mouth.Length) };
 
-        
+
         for (int i = 0; i < prop.Length; i++)
         {
             Instantiate(parts[i][prop[i]], transform);
