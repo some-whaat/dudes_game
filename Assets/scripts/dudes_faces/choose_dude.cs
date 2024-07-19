@@ -9,9 +9,6 @@ public class choose_dude : MonoBehaviour
     catscene_manager catscene_manager;
     [SerializeField] timer_script timer_script;
     [SerializeField] dude_visualaiser dude_visualaiser;
-    private camera_whatch camera_whatch;
-
-    private Camera cam;
 
     public HashSet<int[]> created_dudes;
 
@@ -32,14 +29,6 @@ public class choose_dude : MonoBehaviour
 
 
         created_dudes = new HashSet<int[]>();
-
-        cam = Camera.main;
-        camera_whatch = cam.GetComponent<camera_whatch>();
-
-        if (PlayerPrefs.GetInt("was_tutorial") == 1)
-        {
-            timer_script.enabled = true;
-        }
     }
 
     private void Update()
@@ -48,41 +37,6 @@ public class choose_dude : MonoBehaviour
         {
             Dude_to_Find();
             isntcalled = false;
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mouse_pos = Input.mousePosition;
-            mouse_pos.z = 10f;
-            mouse_pos = cam.ScreenToWorldPoint(mouse_pos);
-
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, 999999, mask))
-            {
-                if (hit.collider.gameObject.tag == "dude")
-                {
-                    IsTheDude(hit.collider.GetComponent<head_changer>().prop, hit.collider.GetComponent<animation_script>());
-                }
-            }
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            Vector3 mouse_pos = Input.mousePosition;
-            mouse_pos.z = 10f;
-            mouse_pos = cam.ScreenToWorldPoint(mouse_pos);
-
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, 999999, mask))
-            {
-                if (hit.collider.gameObject.tag != "dude")
-                {
-                    camera_whatch.target = hit.collider.gameObject.transform;
-                    camera_whatch.change_pos();
-                }
-            }
         }
     }
 

@@ -764,6 +764,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6128337433329752073, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: mask.m_Bits
+      value: 247
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128337433329752073, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: rotation_speed
       value: 200
       objectReference: {fileID: 0}
@@ -1133,8 +1137,8 @@ MonoBehaviour:
   chick: {fileID: 1324857973}
   dude_vis: {fileID: 1404450401}
   timer_script: {fileID: 135771906}
-  off_screen_start_pos_x: -2.1
   had_finded_dude: 0
+  off_screen_start_pos_x: -2.1
   tutorial_intro_jump_amount: 3
   tutorial_intro_dur: 1.7
   tutorial_intro_dest: 0
@@ -1158,8 +1162,6 @@ MonoBehaviour:
   - hold left button and drag anywhere, but don't press on dudes
   mech_sents_zoom:
   - now try to scroll mouse vill to zoom in 'n out
-  mech_sents_cam_changepos:
-  - cool, now to change position around wich camera is rotating
   mech_sents_cam_changepos2:
   - ' press right mouse button on some house part '
   mech_sents_dude_exp:
@@ -1173,6 +1175,7 @@ MonoBehaviour:
   - our bosses had found some.. REALLY bad guys here
   - like see this dude in the bottom right?
   - he ate ALL the sesame cookies, my favoriets!
+  mech_sents_dude_exp2: []
   mech_sents_dudes:
   - find them and catch!! (click whith right mouse button)
   mech_sents_timer_intro:

@@ -573,7 +573,7 @@ PrefabInstance:
       objectReference: {fileID: 919132149155446097, guid: fe996f22978d7ce4f96188f195bb21b7, type: 3}
     - target: {fileID: 4357236508350726287, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4357236508350726287, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: mask.m_Bits
@@ -758,6 +758,10 @@ PrefabInstance:
     - target: {fileID: 6128337433329752073, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128337433329752073, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
+      propertyPath: mask.m_Bits
+      value: 247
       objectReference: {fileID: 0}
     - target: {fileID: 6128337433329752073, guid: 92aa8539c649c944cbc780cd6c23124b, type: 3}
       propertyPath: rotation_speed
@@ -1159,7 +1163,7 @@ MonoBehaviour:
   - ' press right mouse button on some house part to change position around wich
     camera is rotating'
   mech_sents_dude_exp:
-  - good work! now about this dudes
+  - averege work! now about this dudes
   - they are truly terrifying right?
   - like what are they actually doing???
   - (and on top of that, they're like COMPLETELY NAKED (?))
@@ -1183,6 +1187,7 @@ MonoBehaviour:
   - so this is a timer that counts down, screw up, don't make it in time..
   - and they'll send you to the very beginning
   - in sake of electricity savings probably (???)
+  - also they take time off for your mistakes
   - and if you'll find the right dude, they'll send you to the next house
   - but *I* have some MUCH more important stuff to do, so..
   mech_sents_ending:
@@ -1397,7 +1402,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 452175604}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22edab4dde6ec0946b334e462fedab70, type: 3}
   m_Name: 

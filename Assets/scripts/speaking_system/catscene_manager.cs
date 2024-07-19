@@ -191,8 +191,6 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
-        timer_script.start_timer = false;
-        timer_script.enabled = true;
         speeking_manager.is_unskip = false;
         speeking_manager.start_speaking(mech_sents_timer_intro);
 
@@ -201,6 +199,8 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
+        timer_script.start_timer = false;
+        timer_script.enabled = true;
         speeking_manager.start_speaking(mech_sents_timer);
 
         while (speeking_manager.is_speaking)
