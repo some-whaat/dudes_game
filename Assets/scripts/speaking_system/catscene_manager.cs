@@ -32,9 +32,9 @@ public class catscene_manager : MonoBehaviour
     [SerializeField] string[] mech_intro_sents;
     [SerializeField] string[] mech_sents_cam_rot;
     [SerializeField] string[] mech_sents_zoom;
-    [SerializeField] string[] mech_sents_cam_changepos;
     [SerializeField] string[] mech_sents_cam_changepos2;
     [SerializeField] string[] mech_sents_dude_exp;
+    [SerializeField] string[] mech_sents_dude_exp2;
     [SerializeField] string[] mech_sents_dudes;
     [SerializeField] string[] mech_sents_timer_intro;
     [SerializeField] string[] mech_sents_timer;
@@ -56,24 +56,6 @@ public class catscene_manager : MonoBehaviour
         chick.SetActive(true);
         StartCoroutine(tutorial_intro());
     }
-
-    /*
-    private IEnumerator tutorial_pipline()
-    {
-
-        foreach(string func_sting  in funcs)
-        {
-            string[] func = func_sting.Split(' ');
-
-            if (func.Length == 2 )
-            {
-                Invoke(func[0], float.Parse(func[1]));
-            }
-        }
-
-    }
-    */
-
 
     public IEnumerator tutorial_intro()
     {
@@ -174,14 +156,6 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
-        speeking_manager.is_unskip = false;
-        speeking_manager.start_speaking(mech_sents_cam_changepos);
-
-        while (speeking_manager.is_speaking)
-        {
-            yield return null;
-        }
-
         speeking_manager.is_unskip = true;
 
         camera_whatch cam_script = cam.GetComponent<camera_whatch>();
@@ -201,8 +175,15 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
-        speeking_manager.is_unskip = true;
+        speeking_manager.start_speaking(mech_sents_dude_exp2);
         dude_vis.SetActive(true);
+
+        while (speeking_manager.is_speaking)
+        {
+            yield return null;
+        }
+
+        speeking_manager.is_unskip = true;
         speeking_manager.start_speaking(mech_sents_dudes);
 
         while (!had_finded_dude)
@@ -210,6 +191,8 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
+        timer_script.start_timer = false;
+        timer_script.enabled = true;
         speeking_manager.is_unskip = false;
         speeking_manager.start_speaking(mech_sents_timer_intro);
 
@@ -218,8 +201,6 @@ public class catscene_manager : MonoBehaviour
             yield return null;
         }
 
-        timer_script.start_timer = false;
-        timer_script.enabled = true;
         speeking_manager.start_speaking(mech_sents_timer);
 
         while (speeking_manager.is_speaking)
@@ -233,17 +214,15 @@ public class catscene_manager : MonoBehaviour
         timer_script.start_timer = true;
 
         chick_anim_script.stop_idle_ani();
-        chick_anim_script.jump(-3f, 6, 3f);
+        chick_anim_script.jump(-3.4f, 6, 3f);
 
         while (chick_anim_script.is_jumping)
         {
             yield return null;
         }
 
-        //PlayerPrefs.SetInt("was_tutorial", 1);
         chick_cont.SetActive(false);
         manadger_script.do_tutorial = false;
         choose_dude.Dude_to_Find();
     }
-
 }

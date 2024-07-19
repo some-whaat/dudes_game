@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner_script: {fileID: 0}
-  center_for_camera: {fileID: 0}
+  camera_center: {fileID: 0}
   colors:
   - {r: 1, g: 0.90196085, b: 0.882353, a: 1}
   - {r: 0.8745098, g: 0.6069098, b: 0.72924125, a: 1}
@@ -55,9 +55,8 @@ MonoBehaviour:
   plate_ornaments:
   - {fileID: 919132149155446097, guid: 0fdcd04f8465986418349bf63b811913, type: 3}
   - {fileID: 919132149155446097, guid: f014c83ebdb10bc42b4f8426ad4d3f09, type: 3}
+  - {fileID: 919132149155446097, guid: c1aac7a018215f746b3e054fae7180bd, type: 3}
   plate: {fileID: 1927125606229036755, guid: 9216d3443da2ebd45956423bd69572e7, type: 3}
   wall_coll: {fileID: 1555623924044153249, guid: 6d790e2ceb7fd724db1b3180da655ded, type: 3}
   stairs: {fileID: 4929476852316421578, guid: dc4ee396e35210a4c863399ad9280dd3, type: 3}
-  amount_of_floors: 5
-  amount_spawned_plates: 44
   ornament_fiequoncy: 5

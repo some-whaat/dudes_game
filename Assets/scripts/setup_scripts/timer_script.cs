@@ -9,7 +9,13 @@ public class timer_script : MonoBehaviour
     public bool start_timer = true;
 
     [SerializeField] manadger_script manadger_script;
-    [SerializeField] Text timer_text;
+    public Text timer_text;
+
+    private void Start()
+    {
+        timer_text = GetComponent<Text>();
+        timer_text.text = "60";
+    }
 
     void Update()
     {
